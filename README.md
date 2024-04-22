@@ -2,6 +2,9 @@
 ### Incremental SDLC Project - Pure Tone 
 
 ## Index
+### Team
+- Isaac, Jonathan, Bavya, Alexis, John
+  
 #### Part 1
 - **The Basics**:  [Team Details and Problem Statement]() <br>
 - **Planning**:  [Planning]() <br>
