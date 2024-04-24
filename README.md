@@ -6,12 +6,12 @@
 - Isaac, Jonathan, Bavya, Alexis, John
   
 #### Part 1
-- **The Basics**:  [Team Details and Problem Statement]() <br>
+- **The Basics**:  [The Start: Day 1](https://github.com/JGPerks/Pure-Tone/blob/eb7ab7163cbee6d4977899e5035022727306a3c7/DOCUMENTATION%20/Sprint%201%20Uploads/WhiteboardPlan4-22.jpg) <br>
 - **Timeline**:  [Timeline](https://github.com/JGPerks/Pure-Tone/blob/a0a6a8e8bd5c6dd491517dba660b6ea7ab47194a/DOCUMENTATION%20/Sprint%201%20Uploads/IncrementalTimeline.pdf) <br>
 - **Requirements**:  [Requirements]() <br>
 - **Milestones**:  [Workflow]()
+- **Executive Design Document**:  [Executive Summary Document]() <br>
+- **Security Design Document**:  [Security Design Document]() <br>
 
 #### Part 2
-- **Executive Design Document**:  [Executive Design Document]() <br>
-- **Security Design Document**:  [Security Design Document]() <br>
 - **Diagrams Directory**:  [Diagrams]() <br>
