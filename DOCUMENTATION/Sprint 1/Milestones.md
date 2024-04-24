@@ -12,6 +12,7 @@ Plan Design (April 26):
 Develop the initial version of the Pure-Tone software prototype.
 Implement basic functionality to generate pure-tone keyboard sounds.
 Design the user interface and user experience flow for the prototype.
+
 SPRINT 2:
 
 Second Design (April 29):
