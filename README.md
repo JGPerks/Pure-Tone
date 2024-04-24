@@ -7,7 +7,7 @@
   
 #### Part 1
 - **The Basics**:  [Team Details and Problem Statement]() <br>
-- **Planning**:  [Planning]() <br>
+- **Timeline**:  [Timeline](https://github.com/JGPerks/Pure-Tone/blob/a0a6a8e8bd5c6dd491517dba660b6ea7ab47194a/DOCUMENTATION%20/Sprint%201%20Uploads/IncrementalTimeline.pdf) <br>
 - **Requirements**:  [Requirements]() <br>
 - **Milestones**:  [Workflow]()
 
