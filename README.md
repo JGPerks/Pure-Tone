@@ -3,7 +3,12 @@
 
 ## Index
 ### Team
-- Isaac, Jonathan, Bavya, Alexis, John
+- Jonathan, Lead
+- Isaac, Designer
+- Bhavya, Programming Co-Lead
+- Alexis, Documentation
+- John, Programming Lead
+- Juan, Security
   
 #### Part 1
 - **The Basics**:  [The Start: Day 1](https://github.com/JGPerks/Pure-Tone/blob/eb7ab7163cbee6d4977899e5035022727306a3c7/DOCUMENTATION%20/Sprint%201%20Uploads/WhiteboardPlan4-22.jpg) <br>
