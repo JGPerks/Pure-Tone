@@ -1,20 +1,20 @@
 # Importing library for parsing command-line arguments
 import argparse
 
-#Importing Tkinter for GUI
+# Importing Tkinter for GUI
 import tkinter as tk
 import tkinter.font as tkf
 
-#Importing custom keyboard modules for Tkinter and layout
+# Importing custom keyboard modules for Tkinter and layout
 import keyboardlayout as kl
 import keyboardlayout.tkinter as klt
 
-# Defining variables for colors and key size
+# Defining variables for colors and key sizes
 grey = '#bebebe'
 dark_grey = '#414141'
 key_size = 100
 
-#Function creates visual keyboard
+# Function creates visual keyboard
 def get_keyboard(window: tk.Tk, layout_name: kl.LayoutName, key_info: kl.KeyInfo) -> klt.KeyboardLayout:
     # Defining keyboard information
     keyboard_info = kl.KeyboardInfo(
@@ -25,7 +25,7 @@ def get_keyboard(window: tk.Tk, layout_name: kl.LayoutName, key_info: kl.KeyInfo
     # Defining key sizes(width, height)
     letter_key_size = (key_size, key_size)
 
-    #Creating keyboard layout
+    # Creating keyboard layout
     keyboard_layout = klt.KeyboardLayout(
         layout_name,
         keyboard_info,
@@ -35,7 +35,7 @@ def get_keyboard(window: tk.Tk, layout_name: kl.LayoutName, key_info: kl.KeyInfo
     )
     return keyboard_layout
 
-#Function runs loop until window is closed
+# Function runs loop until window is closed
 def run_until_user_closes_window(
     window: tk.Tk,
     keyboard: klt.KeyboardLayout,
@@ -49,13 +49,13 @@ def run_until_user_closes_window(
         txt_font=tkf.Font(family='Arial', size=key_size//4),
         txt_padding=(key_size//6, key_size//10)
     )
-    #Keeps track of dead key
+    # Keeps track of dead key
     dead_key_pressed = False
 
     # Contains all dead keys
     dead_key_keys = {kl.Key.CIRCUMFLEX, kl.Key.DIACRATICAL}
 
-#Function handles key release events
+# Function handles key release events
     def keyup(e):
         # Obtaining key information
         key = keyboard.get_key(e)
@@ -93,7 +93,7 @@ def run_until_user_closes_window(
     window.mainloop()
 
 
-#Function creates example of visual keyboard
+# Function creates example of visual keyboard
 def keyboard_example(layout_name: kl.LayoutName):
     window = tk.Tk()
     window.resizable(False, False)
