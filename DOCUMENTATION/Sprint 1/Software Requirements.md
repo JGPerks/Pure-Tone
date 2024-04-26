@@ -1,6 +1,7 @@
 # Software Requirements
 ## Languages
 - Python 3.12
+
 ## Modules, Packages, and Libraries
 All of the following are subject to change as development continues:
 - numpy
@@ -11,3 +12,7 @@ All of the following are subject to change as development continues:
 - pyFluidSynth
 - oscilloscope
 - tkinter
+
+## Development Environments
+- PyCharm
+- Visual Studio Code
