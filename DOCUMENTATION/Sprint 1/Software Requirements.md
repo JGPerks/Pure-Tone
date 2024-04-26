@@ -1,6 +1,6 @@
 # Software Requirements
 ## Languages
-- Python 3.12
+- Python 3.11
 
 ## Modules, Packages, and Libraries
 All of the following are subject to change as development continues:
@@ -12,6 +12,7 @@ All of the following are subject to change as development continues:
 - pyFluidSynth
 - oscilloscope
 - tkinter
+- pygame
 
 ## Development Environments
 - PyCharm
