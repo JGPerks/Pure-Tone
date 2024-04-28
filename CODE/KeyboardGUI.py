@@ -1,6 +1,10 @@
 # Importing library for parsing command-line arguments
 import argparse
 
+from playsound import playsound
+import pygame
+import time as t
+
 # Importing Tkinter for GUI
 import tkinter as tk
 import tkinter.font as tkf
@@ -8,6 +12,58 @@ import tkinter.font as tkf
 # Importing custom keyboard modules for Tkinter and layout
 import keyboardlayout as kl
 import keyboardlayout.tkinter as klt
+
+class BOBsHeart:
+    def __init__(self):
+        self.keysounds = { 'Key.A': 'Sound Files/Pure Keys/C7.wav',
+                    'Key.B': 'Sound Files/Pure Keys/E3.wav',
+                    'Key.C': 'Sound Files/Pure Keys/D7.wav',
+                    'Key.D': 'Sound Files/Pure Keys/D#3.wav',
+                    'Key.E':'Sound Files/Pure Keys/C#3_2.wav',
+                    'Key.F': 'Sound Files/Pure Keys/D#4.wav',
+                    'Key.G': 'Sound Files/Pure Keys/D#5.wav',
+                    'Key.H': 'Sound Files/Pure Keys/D#6.wav',
+                    'Key.I': 'Sound Files/Pure Keys/C#8.wav',
+                    'Key.J': 'Sound Files/Pure Keys/D#7.wav',
+                    'Key.K': 'Sound Files/Pure Keys/D#8.wav',
+                    'Key.L': 'Sound Files/Pure Keys/D3.wav',
+                    'Key.M': 'Sound Files/Pure Keys/e8.wav',
+                    'Key.N': 'Sound Files/Pure Keys/E7.wav',
+                    'Key.O': 'Sound Files/Pure Keys/C3.wav',
+                    'Key.P': 'Sound Files/Pure Keys/c4.wav',
+                    'Key.Q': 'Sound Files/Pure Keys/B8.wav' ,
+                    'Key.R': 'Sound Files/Pure Keys/c#4.wav',
+                    'Key.S': 'Sound Files/Pure Keys/C8.wav',
+                    'Key.T': 'Sound Files/Pure Keys/c#5.wav',
+                    'Key.U': 'Sound Files/Pure Keys/c#7.wav',
+                    'Key.V': 'Sound Files/Pure Keys/D8.wav',
+                    'Key.W': 'Sound Files/Pure Keys/C#3.wav',
+                    'Key.X': 'Sound Files/Pure Keys/D4_2.wav',
+                    'Key.Y': 'Sound Files/Pure Keys/c#6.wav',
+                    'Key.Z': 'Sound Files/Pure Keys/D4.wav',
+                    'Key.DIGIT_1': 'Sound Files/Pure Keys/A#4.wav',
+                    'Key.DIGIT_2': 'Sound Files/Pure Keys/A#6.wav',
+                    'Key.DIGIT_3': 'Sound Files/Pure Keys/A#7.wav',
+                    'Key.DIGIT_4': 'Sound Files/Pure Keys/A#8.wav',
+                    'Key.DIGIT_5': 'Sound Files/Pure Keys/A3.wav',
+                    'Key.DIGIT_6': 'Sound Files/Pure Keys/A7.wav',
+                    'Key.DIGIT_7': 'Sound Files/Pure Keys/A8.wav',
+                    'Key.DIGIT_8': 'Sound Files/Pure Keys/B3.wav',
+                    'Key.DIGIT_9': 'Sound Files/Pure Keys/B4.wav',
+                    'Key.DIGIT_0': 'Sound Files/Pure Keys/B7.wav'}
+
+        pygame.mixer.init()
+
+    def getKeyNote(self, key):
+        keyNote = self.keysounds[str(key)]
+        return keyNote
+
+    def play(self, sound):
+        pygame.mixer.find_channel().play(pygame.mixer.Sound(sound))
+
+    def stop(self):
+        pygame.mixer.stop()
+
 
 # Defining variables for colors and key sizes
 grey = '#bebebe'
@@ -65,6 +121,7 @@ def run_until_user_closes_window(
         # Update appearance of the pressed key on the virtual keyboard
         keyboard.update_key(
             key, released_key_info)
+        player.stop()
         nonlocal dead_key_pressed
         # If a dead key was previously pressed and the released key is not a dead key then
         # reset the dead_key_pressed flag and update the appearance of the circumflex key
@@ -76,6 +133,8 @@ def run_until_user_closes_window(
 #Function handles key press events
     def keydown(e):
         key = keyboard.get_key(e)
+        keyNote = player.getKeyNote(key)
+        player.play(keyNote)
         if key is None:
             return
         keyboard.update_key(key, pressed_key_info)
@@ -112,8 +171,10 @@ def keyboard_example(layout_name: kl.LayoutName):
     # Runs Tkinter event loop until the user closes the window
     run_until_user_closes_window(window, keyboard, key_info)
 
+
 if __name__ == "__main__":
     # Creating an argument parser object
+    player = BOBsHeart()
     parser = argparse.ArgumentParser()
     parser.add_argument(
         'layout_name',
