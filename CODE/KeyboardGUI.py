@@ -106,8 +106,8 @@ class BOBsHeart:
     def play(self, sound, channel):
         channel.play(pygame.mixer.Sound(sound))
 
-    def stop(self):
-        pygame.mixer.stop()
+    def stop(self, channel):
+        channel.fadeout(50)
 
 
 # Defining variables for colors and key sizes
@@ -161,7 +161,7 @@ def run_until_user_closes_window(
         # Obtaining key information
         key = keyboard.get_key(e)
         channel = player.getChannel(key)
-        channel.stop()
+        player.stop(channel)
         # Verify key is part of virtual keyboard
         if key is None:
             return
