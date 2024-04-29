@@ -19,9 +19,13 @@
 - **Use Case Diagram**:  [The Usecase Diagram](https://github.com/JGPerks/Pure-Tone/blob/0d369f43c79cca8d819723ef2e5adfb34342f564/DESIGN/Use%20Case%20Diagram.png) <br>
 - **Timeline**:  [Timeline](https://github.com/JGPerks/Pure-Tone/blob/a0a6a8e8bd5c6dd491517dba660b6ea7ab47194a/DOCUMENTATION%20/Sprint%201%20Uploads/IncrementalTimeline.pdf) <br>
 - **Requirements**:  [Design Requirements](https://github.com/JGPerks/Pure-Tone/blob/eb7ab7163cbee6d4977899e5035022727306a3c7/DESIGN%20/Initial%20design%20concept.md) <br>
-- **Milestones**:  [Workflow]()
+- **Milestones**:  [Workflow](https://github.com/JGPerks/Pure-Tone/blob/ad1184739d1b4a7d11ef362f29b7a21836893ec7/DOCUMENTATION/Sprint%201/Milestones.md)
 - **Executive Design Document**:  [Executive Summary Document](https://github.com/JGPerks/Pure-Tone/blob/eb7ab7163cbee6d4977899e5035022727306a3c7/DOCUMENTATION%20/Sprint%201%20/Executive%20Summary.md) <br>
-- **Security Design Document**:  [Security Design Document]() <br>
+- **Security Design Document**:  [Security Requirements Document](https://github.com/JGPerks/Pure-Tone/blob/031284b0a2e8796da71fb1cfb716db0b33e62a31/DOCUMENTATION/Sprint%201/SecurityRequirements.md) <br>
+- **Security Statement**: [Security Statement Document](https://github.com/JGPerks/Pure-Tone/blob/19b2f89487fb8736411e0419b0052e9e3af09ce9/DOCUMENTATION/Sprint%201/SecurityStatement.md)
+- **User Requirements**: [User Requirements](https://github.com/JGPerks/Pure-Tone/blob/19b2f89487fb8736411e0419b0052e9e3af09ce9/DOCUMENTATION/Sprint%201/UserRequirements.md)
+- **Statement of Work**: [The Statement of Work](https://github.com/JGPerks/Pure-Tone/blob/19b2f89487fb8736411e0419b0052e9e3af09ce9/DOCUMENTATION/Sprint%201/Statement%20of%20Work.md)
+- **Sprint 1 Summary**: [The Work we Completed for Sprint 1]()
 
 #### Part 2
 - **Diagrams Directory**:  [Diagrams]() <br>
