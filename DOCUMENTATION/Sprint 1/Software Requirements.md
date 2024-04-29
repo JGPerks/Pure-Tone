@@ -13,7 +13,9 @@ All of the following are subject to change as development continues:
 - oscilloscope
 - tkinter
 - pygame
-- keyboardlayout
+- keyboardlayout 
+- pyaudio
+- PySimpleGUI
 
 ## Development Environments
 - PyCharm
