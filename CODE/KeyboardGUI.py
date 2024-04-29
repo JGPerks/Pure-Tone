@@ -15,51 +15,96 @@ import keyboardlayout.tkinter as klt
 
 class BOBsHeart:
     def __init__(self):
-        self.keysounds = { 'Key.A': 'Sound Files/Pure Keys/C7.wav',
-                    'Key.B': 'Sound Files/Pure Keys/E3.wav',
-                    'Key.C': 'Sound Files/Pure Keys/D7.wav',
-                    'Key.D': 'Sound Files/Pure Keys/D#3.wav',
-                    'Key.E':'Sound Files/Pure Keys/C#3_2.wav',
-                    'Key.F': 'Sound Files/Pure Keys/D#4.wav',
-                    'Key.G': 'Sound Files/Pure Keys/D#5.wav',
-                    'Key.H': 'Sound Files/Pure Keys/D#6.wav',
-                    'Key.I': 'Sound Files/Pure Keys/C#8.wav',
-                    'Key.J': 'Sound Files/Pure Keys/D#7.wav',
-                    'Key.K': 'Sound Files/Pure Keys/D#8.wav',
-                    'Key.L': 'Sound Files/Pure Keys/D3.wav',
-                    'Key.M': 'Sound Files/Pure Keys/e8.wav',
-                    'Key.N': 'Sound Files/Pure Keys/E7.wav',
-                    'Key.O': 'Sound Files/Pure Keys/C3.wav',
-                    'Key.P': 'Sound Files/Pure Keys/c4.wav',
-                    'Key.Q': 'Sound Files/Pure Keys/B8.wav' ,
-                    'Key.R': 'Sound Files/Pure Keys/c#4.wav',
-                    'Key.S': 'Sound Files/Pure Keys/C8.wav',
-                    'Key.T': 'Sound Files/Pure Keys/c#5.wav',
-                    'Key.U': 'Sound Files/Pure Keys/c#7.wav',
-                    'Key.V': 'Sound Files/Pure Keys/D8.wav',
-                    'Key.W': 'Sound Files/Pure Keys/C#3.wav',
-                    'Key.X': 'Sound Files/Pure Keys/D4_2.wav',
-                    'Key.Y': 'Sound Files/Pure Keys/c#6.wav',
-                    'Key.Z': 'Sound Files/Pure Keys/D4.wav',
-                    'Key.DIGIT_1': 'Sound Files/Pure Keys/A#4.wav',
-                    'Key.DIGIT_2': 'Sound Files/Pure Keys/A#6.wav',
-                    'Key.DIGIT_3': 'Sound Files/Pure Keys/A#7.wav',
-                    'Key.DIGIT_4': 'Sound Files/Pure Keys/A#8.wav',
-                    'Key.DIGIT_5': 'Sound Files/Pure Keys/A3.wav',
-                    'Key.DIGIT_6': 'Sound Files/Pure Keys/A7.wav',
-                    'Key.DIGIT_7': 'Sound Files/Pure Keys/A8.wav',
-                    'Key.DIGIT_8': 'Sound Files/Pure Keys/B3.wav',
-                    'Key.DIGIT_9': 'Sound Files/Pure Keys/B4.wav',
-                    'Key.DIGIT_0': 'Sound Files/Pure Keys/B7.wav'}
-
         pygame.mixer.init()
+        pygame.mixer.set_num_channels(36)
+
+        self.channels = {'Key.DIGIT_1': pygame.mixer.Channel(26),
+                        'Key.DIGIT_2': pygame.mixer.Channel(27),
+                        'Key.DIGIT_3': pygame.mixer.Channel(28),
+                        'Key.DIGIT_4': pygame.mixer.Channel(29),
+                        'Key.DIGIT_5': pygame.mixer.Channel(30),
+                        'Key.DIGIT_6': pygame.mixer.Channel(31),
+                        'Key.DIGIT_7': pygame.mixer.Channel(32),
+                        'Key.DIGIT_8': pygame.mixer.Channel(33),
+                        'Key.DIGIT_9': pygame.mixer.Channel(34),
+                        'Key.DIGIT_0': pygame.mixer.Channel(35),
+                        'Key.Q': pygame.mixer.Channel(0),
+                        'Key.W': pygame.mixer.Channel(1),
+                        'Key.E': pygame.mixer.Channel(2),
+                        'Key.R': pygame.mixer.Channel(3),
+                        'Key.T': pygame.mixer.Channel(4),
+                        'Key.Y': pygame.mixer.Channel(5),
+                        'Key.U': pygame.mixer.Channel(6),
+                        'Key.I': pygame.mixer.Channel(7),
+                        'Key.O': pygame.mixer.Channel(8),
+                        'Key.P': pygame.mixer.Channel(9),
+                        'Key.A': pygame.mixer.Channel(10),
+                        'Key.S': pygame.mixer.Channel(11),
+                        'Key.D': pygame.mixer.Channel(12),
+                        'Key.F': pygame.mixer.Channel(13),
+                        'Key.G': pygame.mixer.Channel(14),
+                        'Key.H': pygame.mixer.Channel(15),
+                        'Key.J': pygame.mixer.Channel(16),
+                        'Key.K': pygame.mixer.Channel(17),
+                        'Key.L': pygame.mixer.Channel(18),
+                        'Key.Z': pygame.mixer.Channel(19),
+                        'Key.X': pygame.mixer.Channel(20),
+                        'Key.C': pygame.mixer.Channel(21),
+                        'Key.V': pygame.mixer.Channel(22),
+                        'Key.B': pygame.mixer.Channel(23),
+                        'Key.N': pygame.mixer.Channel(24),
+                        'Key.M': pygame.mixer.Channel(25)}
+
+        self.keysounds = {'Key.DIGIT_1': 'Sound Files/Pure Keys/C3.wav',
+                        'Key.DIGIT_2': 'Sound Files/Pure Keys/D3.wav',
+                        'Key.DIGIT_3': 'Sound Files/Pure Keys/E3.wav',
+                        'Key.DIGIT_4': 'Sound Files/Pure Keys/f3.wav',
+                        'Key.DIGIT_5': 'Sound Files/Pure Keys/G3.wav',
+                        'Key.DIGIT_6': 'Sound Files/Pure Keys/A3.wav',
+                        'Key.DIGIT_7': 'Sound Files/Pure Keys/B3.wav',
+                        'Key.DIGIT_8': 'Sound Files/Pure Keys/c4.wav',
+                        'Key.DIGIT_9': 'Sound Files/Pure Keys/D4.wav',
+                        'Key.DIGIT_0': 'Sound Files/Pure Keys/D4_2.wav',
+                        'Key.Q': 'Sound Files/Pure Keys/F4.wav',
+                        'Key.W': 'Sound Files/Pure Keys/G4.wav',
+                        'Key.E': 'Sound Files/Pure Keys/B4.wav',
+                        'Key.R': 'Sound Files/Pure Keys/',
+                        'Key.T': 'Sound Files/Pure Keys/',
+                        'Key.Y': 'Sound Files/Pure Keys/',
+                        'Key.U': 'Sound Files/Pure Keys/',
+                        'Key.I': 'Sound Files/Pure Keys/',
+                        'Key.O': 'Sound Files/Pure Keys/',
+                        'Key.P': 'Sound Files/Pure Keys/',
+                        'Key.A': 'Sound Files/Pure Keys/',
+                        'Key.S': 'Sound Files/Pure Keys/',
+                        'Key.D': 'Sound Files/Pure Keys/',
+                        'Key.F': 'Sound Files/Pure Keys/',
+                        'Key.G': 'Sound Files/Pure Keys/',
+                        'Key.H': 'Sound Files/Pure Keys/',
+                        'Key.I': 'Sound Files/Pure Keys/',
+                        'Key.J': 'Sound Files/Pure Keys/',
+                        'Key.K': 'Sound Files/Pure Keys/',
+                        'Key.L': 'Sound Files/Pure Keys/',
+                        'Key.Z': 'Sound Files/Pure Keys/',
+                        'Key.X': 'Sound Files/Pure Keys/',
+                        'Key.C': 'Sound Files/Pure Keys/',
+                        'Key.V': 'Sound Files/Pure Keys/',
+                        'Key.B': 'Sound Files/Pure Keys/',
+                        'Key.N': 'Sound Files/Pure Keys/',
+                        'Key.M': 'Sound Files/Pure Keys/'}
+
+
 
     def getKeyNote(self, key):
         keyNote = self.keysounds[str(key)]
         return keyNote
 
-    def play(self, sound):
-        pygame.mixer.find_channel().play(pygame.mixer.Sound(sound))
+    def getChannel(self, key):
+        channel = self.channels[str(key)]
+        return channel
+
+    def play(self, sound, channel):
+        channel.play(pygame.mixer.Sound(sound))
 
     def stop(self):
         pygame.mixer.stop()
@@ -115,13 +160,14 @@ def run_until_user_closes_window(
     def keyup(e):
         # Obtaining key information
         key = keyboard.get_key(e)
+        channel = player.getChannel(key)
+        channel.stop()
         # Verify key is part of virtual keyboard
         if key is None:
             return
         # Update appearance of the pressed key on the virtual keyboard
         keyboard.update_key(
             key, released_key_info)
-        player.stop()
         nonlocal dead_key_pressed
         # If a dead key was previously pressed and the released key is not a dead key then
         # reset the dead_key_pressed flag and update the appearance of the circumflex key
@@ -134,7 +180,9 @@ def run_until_user_closes_window(
     def keydown(e):
         key = keyboard.get_key(e)
         keyNote = player.getKeyNote(key)
-        player.play(keyNote)
+        channel = player.getChannel(key)
+        if channel.get_busy() == False:
+            player.play(keyNote, channel)
         if key is None:
             return
         keyboard.update_key(key, pressed_key_info)
