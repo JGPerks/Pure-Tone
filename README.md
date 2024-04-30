@@ -25,7 +25,7 @@
 - **Security Statement**: [Security Statement Document](https://github.com/JGPerks/Pure-Tone/blob/19b2f89487fb8736411e0419b0052e9e3af09ce9/DOCUMENTATION/Sprint%201/SecurityStatement.md)
 - **User Requirements**: [User Requirements](https://github.com/JGPerks/Pure-Tone/blob/19b2f89487fb8736411e0419b0052e9e3af09ce9/DOCUMENTATION/Sprint%201/UserRequirements.md)
 - **Statement of Work**: [The Statement of Work](https://github.com/JGPerks/Pure-Tone/blob/19b2f89487fb8736411e0419b0052e9e3af09ce9/DOCUMENTATION/Sprint%201/Statement%20of%20Work.md)
-- **Sprint 1 Summary**: [The Work we Completed for Sprint 1]()
+- **Sprint 1 Summary**: [The Work we Completed for Sprint 1](https://github.com/JGPerks/Pure-Tone/blob/f409d304f65b36b8fc343aa2a892eee7bcc1dc38/DOCUMENTATION/Sprint%201/Sprint1Summary.md)
 
 #### Part 2
 - **Diagrams Directory**:  [Diagrams]() <br>
