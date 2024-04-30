@@ -12,7 +12,7 @@
   
 #### SPRINT 1
 - **Class Diagram**:  [Class Diagram](https://github.com/JGPerks/Pure-Tone/blob/35f01fc2742b944aed5686a0ac4f176311d255cf/DESIGN/BOB%20Class%20Diagram.png) <br>
-- **The Basics**:  [The Start: Day 1](https://github.com/JGPerks/Pure-Tone/blob/eb7ab7163cbee6d4977899e5035022727306a3c7/DOCUMENTATION%20/Sprint%201%20Uploads/WhiteboardPlan4-22.jpg) <br>
+- **The Basics (Whiteboard Plan 1)**:  [The Start: Day 1](https://github.com/JGPerks/Pure-Tone/blob/eb7ab7163cbee6d4977899e5035022727306a3c7/DOCUMENTATION%20/Sprint%201%20Uploads/WhiteboardPlan4-22.jpg) <br>
 - **DFD 0**:  [Data Flow Diagram Level 0](https://github.com/JGPerks/Pure-Tone/blob/35f01fc2742b944aed5686a0ac4f176311d255cf/DESIGN/BOB%20DFD%20Level%200.png) <br>
 - **DFD 1**:  [Data Flow Diagram Level 1](https://github.com/JGPerks/Pure-Tone/blob/35f01fc2742b944aed5686a0ac4f176311d255cf/DESIGN/BOB%20DFD%20Level%201.png) <br>
 - **Problem Frame**:  [Problem Frame](https://github.com/JGPerks/Pure-Tone/blob/0d369f43c79cca8d819723ef2e5adfb34342f564/DESIGN/BOB%20Problem%20Frame.png) <br>
@@ -28,4 +28,5 @@
 - **Sprint 1 Summary**: [The Work we Completed for Sprint 1](https://github.com/JGPerks/Pure-Tone/blob/f409d304f65b36b8fc343aa2a892eee7bcc1dc38/DOCUMENTATION/Sprint%201/Sprint1Summary.md)
 
 #### Part 2
+- **The Basics (Whiteboard Plan 2)**:  [Week 2 Planning Image](https://github.com/JGPerks/Pure-Tone/blob/f409d304f65b36b8fc343aa2a892eee7bcc1dc38/DOCUMENTATION/Sprint%202/Sprint2Image.jpg) <br>
 - **Diagrams Directory**:  [Diagrams]() <br>
