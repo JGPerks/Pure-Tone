@@ -13,6 +13,11 @@ import tkinter.font as tkf
 import keyboardlayout as kl
 import keyboardlayout.tkinter as klt
 
+import sounddevice as sd
+import soundfile as sf
+from tkinter import Button, Label, filedialog
+
+
 class BOBsHeart:
     def __init__(self):
         pygame.mixer.init()
@@ -215,9 +220,25 @@ def keyboard_example(layout_name: kl.LayoutName):
     # Calls and creates virtual keyboard
     keyboard = get_keyboard(window, layout_name, key_info)
 
+    button = Button(window, text="Record", command=recAudio)
+    button.pack()
     # Runs Tkinter event loop until the user closes the window
     run_until_user_closes_window(window, keyboard, key_info)
 
+def recAudio():
+    def rec():
+        fs = 48000
+        duration = 600
+        recording = sd.rec(int(duration * fs), samplerate=fs, channels=2)
+        sd.wait()
+        file_path = filedialog.asksaveasfilename(defaultextension=".flac",
+                                                 filetypes=[("FLAC files", "*.flac"), ("All files", "*.*")])
+
+        if file_path:
+            # Save the recording to the selected file path
+            sf.write(file_path, recording, fs)
+
+    threading.Thread(target=rec).start()
 
 if __name__ == "__main__":
     # Creating an argument parser object
