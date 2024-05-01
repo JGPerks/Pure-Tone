@@ -1,5 +1,6 @@
 # Importing library for parsing command-line arguments
 import argparse
+import threading
 
 from playsound import playsound
 import pygame
@@ -16,6 +17,8 @@ import keyboardlayout.tkinter as klt
 import sounddevice as sd
 import soundfile as sf
 from tkinter import Button, Label, filedialog
+# Import recording from stereo mix functionality
+import Recorder
 
 
 class BOBsHeart:
@@ -225,20 +228,14 @@ def keyboard_example(layout_name: kl.LayoutName):
     # Runs Tkinter event loop until the user closes the window
     run_until_user_closes_window(window, keyboard, key_info)
 
+
 def recAudio():
     def rec():
-        fs = 48000
-        duration = 600
-        recording = sd.rec(int(duration * fs), samplerate=fs, channels=2)
-        sd.wait()
-        file_path = filedialog.asksaveasfilename(defaultextension=".flac",
-                                                 filetypes=[("FLAC files", "*.flac"), ("All files", "*.*")])
-
-        if file_path:
-            # Save the recording to the selected file path
-            sf.write(file_path, recording, fs)
+        recorder = Recorder
+        recorder.startRecording()
 
     threading.Thread(target=rec).start()
+
 
 if __name__ == "__main__":
     # Creating an argument parser object
