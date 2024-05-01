@@ -1,5 +1,6 @@
 # Importing library for parsing command-line arguments
 import argparse
+import threading
 
 from playsound import playsound
 import pygame
@@ -12,6 +13,12 @@ import tkinter.font as tkf
 # Importing custom keyboard modules for Tkinter and layout
 import keyboardlayout as kl
 import keyboardlayout.tkinter as klt
+
+
+import sounddevice as sd
+import soundfile as sf
+from tkinter import Button, Label, filedialog
+
 
 class BOBsHeart:
     def __init__(self):
@@ -91,8 +98,6 @@ class BOBsHeart:
                         'Key.B': 'Sound Files/Pure Keys/',
                         'Key.N': 'Sound Files/Pure Keys/',
                         'Key.M': 'Sound Files/Pure Keys/'}
-
-
 
     def getKeyNote(self, key):
         keyNote = self.keysounds[str(key)]
@@ -215,8 +220,27 @@ def keyboard_example(layout_name: kl.LayoutName):
     # Calls and creates virtual keyboard
     keyboard = get_keyboard(window, layout_name, key_info)
 
-    # Runs Tkinter event loop until the user closes the window
+    button = Button(window, text="Record", command=recAudio)
+    button.pack()
+
     run_until_user_closes_window(window, keyboard, key_info)
+def recAudio():
+    def rec():
+        fs = 48000
+        duration = 600
+        recording = sd.rec(int(duration * fs), samplerate=fs, channels=2)
+        sd.wait()
+        file_path = filedialog.asksaveasfilename(defaultextension=".flac",
+                                                 filetypes=[("FLAC files", "*.flac"), ("All files", "*.*")])
+
+        if file_path:
+            # Save the recording to the selected file path
+            sf.write(file_path, recording, fs)
+
+    threading.Thread(target=rec).start()
+
+
+
 
 
 if __name__ == "__main__":
