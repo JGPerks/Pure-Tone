@@ -32,7 +32,7 @@ class OscilloscopeGUI:
                    sg.Button('Stop', font=self.AppFont, disabled=True),
                    sg.Button('Exit', font=self.AppFont)]]
         # The window is then created and stored in the _VARS dictionary under the key 'window'
-        self._VARS['window'] = sg.Window('Microphone Waveform Pyplot', layout, finalize=True, location=(400, 100))
+        self._VARS['window'] = sg.Window('Microphone Waveform Pyplot', self.layout, finalize=True, location=(400, 100))
         self.CHUNK = 1024
         self.RATE = 44100
         self.INTERVAL = 1
@@ -92,7 +92,7 @@ class OscilloscopeGUI:
     # INIT Pyplot:
     def plot_things(self):
         plt.style.use('ggplot')
-        self._VARS['xData'] = np.linspace(0, self.CHUNK, num=CHUNK, dtype=int)
+        self._VARS['xData'] = np.linspace(0, self.CHUNK, num=self.CHUNK, dtype=int)
         self._VARS['yData'] = np.zeros(self.CHUNK)
         self.drawPlot()
 
@@ -114,7 +114,7 @@ class OscilloscopeGUI:
             # If the size of the audioData array in _VARS is not zero
             elif self._VARS['audioData'].size != 0:
                 # Update the progress bar with the MAX value in the 'audioData' array
-                self._VARS['window']['-PROG-'].update(np.amax(_VARS['audioData']))
+                self._VARS['window']['-PROG-'].update(np.amax(self._VARS['audioData']))
                 # Update the plot using updatePlot() function
                 self.updatePlot(self._VARS['audioData'])
 
