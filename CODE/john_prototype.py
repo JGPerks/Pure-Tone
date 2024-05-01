@@ -11,33 +11,41 @@ from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 """ Microphone waveform display with Pyaudio, Pyplot and PysimpleGUI """
 
 # VARS CONSTS:
+# Define dictionary
+# Create variable names and then set each variable initially equal to false
+# These data will plot and handle data
 _VARS = {'window': False,
          'stream': False,
          'fig_agg': False,
          'pltFig': False,
          'xData': False,
          'yData': False,
+         # Set audioData to an empty numPy array
          'audioData': np.array([])}
 
 # pysimpleGUI INIT:
 AppFont = 'Any 16'
+# Set theme ('DarkTeal2')
 sg.theme('DarkTeal2')
-layout = [[sg.Canvas(key='figCanvas')],
+layout = [[sg.Canvas(key='figCanvas')], # Create Canvas
           [sg.ProgressBar(4000, orientation='h',
-                          size=(60, 20), key='-PROG-')],
-          [sg.Button('Listen', font=AppFont),
-           sg.Button('Stop', font=AppFont, disabled=True),
-           sg.Button('Exit', font=AppFont)]]
-_VARS['window'] = sg.Window('Microphone Waveform Pyplot',
+                          size=(60, 20), key='-PROG-')], # Create horizontal progress bar
+          [sg.Button('Listen', font=AppFont), # Create Listen button
+           sg.Button('Stop', font=AppFont, disabled=True),# Create Stop button
+           sg.Button('Exit', font=AppFont)]]# Create Exit button
+_VARS['window'] = sg.Window('Microphone Waveform Pyplot', #The window is then created and stored in the _VARS dictionary under the key 'window'
                             layout, finalize=True,
-                            location=(400, 100))
+                            location=(400, 100)) # Screen location
 
 
 # PyAudio INIT:
+# In audio processing a chunk  refers to a segment of audio data that is processed/analyzed at a time
 CHUNK = 1024  # Samples: 1024,  512, 256, 128
+# the sampling rate, which is the number of samples per second
 RATE = 44100  # Equivalent to Human Hearing at 40 kHz
 INTERVAL = 1  # Sampling Interval in Seconds ie Interval to listen
 TIMEOUT = 10  # In ms for the event loop
+# initializes an instance of the PyAudio class, allowing the Python script to interact with the audio input/output devices on the system. This instance is stored in the variable pAud
 pAud = pyaudio.PyAudio()
 
 # \\  -------- PYPLOT -------- //
@@ -111,18 +119,24 @@ drawPlot()
 
 
 # MAIN LOOP
-while True:
-    event, values = _VARS['window'].read(timeout=TIMEOUT)
+while True: # While True continuously check for events from PySimpleGUI window
+    event, values = _VARS['window'].read(timeout=TIMEOUT) #use read() method to read events
+    # If the "event" is sg.WIN_CLOSED(representing the window closed event) or if the 'Exit' button is clicked call stop()
     if event == sg.WIN_CLOSED or event == 'Exit':
         stop()
         pAud.terminate()
         break
+    # If the "event" is listen then call listen function
     if event == 'Listen':
         listen()
+    # If the "event" is Stop then call stop function
     elif event == 'Stop':
         stop()
+    # If the size of the audioData array in _VARS is not zero
     elif _VARS['audioData'].size != 0:
+        # Update the progress bar with the MAX value in the 'audioData' array
         _VARS['window']['-PROG-'].update(np.amax(_VARS['audioData']))
+        # Update the plot using updatePlot() function
         updatePlot(_VARS['audioData'])
 
 _VARS['window'].close()
