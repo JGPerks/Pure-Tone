@@ -18,7 +18,7 @@ import sounddevice as sd
 import soundfile as sf
 from tkinter import Button, Label, filedialog
 # Import recording from stereo mix functionality
-#import Recorder
+import Recorder
 
 
 
@@ -130,16 +130,19 @@ def keyboard_example(layout_name: kl.LayoutName):
 
     button = Button(window, text="Record", command=recAudio)
     button.pack()
+
+    button2 = Button(window, text="Stop Recording", command=recAudio)
+    button2.place(x=795, y=500)
     # Runs Tkinter event loop until the user closes the window
     run_until_user_closes_window(window, keyboard, key_info)
 
 
 def recAudio():
     def rec():
-        #recorder = Recorder
-        #recorder.startRecording()
+        recorder = Recorder
+        recorder.startRecording()
 
-#    threading.Thread(target=rec).start()
+    threading.Thread(target=rec).start()
         print('test')
 
 if __name__ == "__main__":
