@@ -133,6 +133,7 @@ def keyboard_example(layout_name: kl.LayoutName):
     # Runs Tkinter event loop until the user closes the window
     run_until_user_closes_window(window, keyboard, key_info)
 
+def giveName()
 
 def recAudio():
     def rec():
