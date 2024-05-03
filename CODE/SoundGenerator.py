@@ -44,9 +44,9 @@ class BOBsHeart:
         self.keysounds = {
                         'Key.DIGIT_2': 'Sound Files/Long Keys/C#5_2.wav',
                         'Key.DIGIT_3': 'Sound Files/Long Keys/D#5_2.wav',
-                        'Key.DIGIT_5': 'Sound Files/Long Keys/F#6_2.wav',
+                        'Key.DIGIT_5': 'Sound Files/Long Keys/F#5.wav',
                         'Key.DIGIT_6': 'Sound Files/Long Keys/G#5_3.wav',
-                        'Key.DIGIT_7': 'Sound Files/Long Keys/A#6_2.wav',
+                        'Key.DIGIT_7': 'Sound Files/Long Keys/A#5_2.wav',
                         'Key.DIGIT_9': 'Sound Files/Long Keys/C#6_2.wav',
                         'Key.DIGIT_0': 'Sound Files/Long Keys/D#6_2.wav',
                         'Key.Q': 'Sound Files/Long Keys/C5.wav',
