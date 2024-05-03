@@ -1,12 +1,12 @@
 # THIS IS GOING TO BE THE INTEGRATED DOCUMENT WITH THE
 # KEYBOARD, OSCILLOSCOPE, and RECORD BUTTONS
-
+import tkinter
 import tkinter as tk
 from Oscilloscope import OscilloscopeGUI
 
 class PureToneKeyboard:
     def __init__(self, master):
-        self.master = tk()
+        self.master = master
         self.on_screen = []
         self.notes = []
         self.master.title("Pure Tone Keyboard with Oscilloscope and Recording")
