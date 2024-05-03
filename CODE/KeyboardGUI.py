@@ -1,8 +1,9 @@
 # Importing library for parsing command-line arguments
 import argparse
+import threading
 
 from playsound import playsound
-import pygame
+import SoundGenerator
 import time as t
 
 # Importing Tkinter for GUI
@@ -16,102 +17,9 @@ import keyboardlayout.tkinter as klt
 import sounddevice as sd
 import soundfile as sf
 from tkinter import Button, Label, filedialog
+# Import recording from stereo mix functionality
+#import Recorder
 
-
-class BOBsHeart:
-    def __init__(self):
-        pygame.mixer.init()
-        pygame.mixer.set_num_channels(34)
-
-        self.channels = {
-                        'Key.DIGIT_2': pygame.mixer.Channel(27),
-                        'Key.DIGIT_3': pygame.mixer.Channel(28),
-                        'Key.DIGIT_5': pygame.mixer.Channel(29),
-                        'Key.DIGIT_6': pygame.mixer.Channel(30),
-                        'Key.DIGIT_7': pygame.mixer.Channel(31),
-                        'Key.DIGIT_9': pygame.mixer.Channel(32),
-                        'Key.DIGIT_0': pygame.mixer.Channel(33),
-                        'Key.Q': pygame.mixer.Channel(0),
-                        'Key.W': pygame.mixer.Channel(1),
-                        'Key.E': pygame.mixer.Channel(2),
-                        'Key.R': pygame.mixer.Channel(3),
-                        'Key.T': pygame.mixer.Channel(4),
-                        'Key.Y': pygame.mixer.Channel(5),
-                        'Key.U': pygame.mixer.Channel(6),
-                        'Key.I': pygame.mixer.Channel(7),
-                        'Key.O': pygame.mixer.Channel(8),
-                        'Key.P': pygame.mixer.Channel(9),
-                        'Key.S': pygame.mixer.Channel(10),
-                        'Key.D': pygame.mixer.Channel(11),
-                        'Key.G': pygame.mixer.Channel(12),
-                        'Key.H': pygame.mixer.Channel(13),
-                        'Key.J': pygame.mixer.Channel(14),
-                        'Key.L': pygame.mixer.Channel(15),
-                        'Key.SEMICOLON': pygame.mixer.Channel(16),
-                        'Key.Z': pygame.mixer.Channel(17),
-                        'Key.X': pygame.mixer.Channel(18),
-                        'Key.C': pygame.mixer.Channel(19),
-                        'Key.V': pygame.mixer.Channel(20),
-                        'Key.B': pygame.mixer.Channel(21),
-                        'Key.N': pygame.mixer.Channel(22),
-                        'Key.M': pygame.mixer.Channel(23),
-                        'Key.COMMA': pygame.mixer.Channel(24),
-                        'Key.PERIOD': pygame.mixer.Channel(25),
-                        'Key.FORWARDSLASH': pygame.mixer.Channel(26)}
-
-        self.keysounds = {
-                        'Key.DIGIT_2': 'Sound Files/Pure Keys/c#5.wav',
-                        'Key.DIGIT_3': 'Sound Files/Pure Keys/D#5.wav',
-                        'Key.DIGIT_5': 'Sound Files/Pure Keys/F#5.wav',
-                        'Key.DIGIT_6': 'Sound Files/Pure Keys/G#5.wav',
-                        'Key.DIGIT_7': 'Sound Files/Pure Keys/A#4.wav',
-                        'Key.DIGIT_9': 'Sound Files/Pure Keys/c#6.wav',
-                        'Key.DIGIT_0': 'Sound Files/Pure Keys/D#6.wav',
-                        'Key.Q': 'Sound Files/Pure Keys/',
-                        'Key.W': 'Sound Files/Pure Keys/',
-                        'Key.E': 'Sound Files/Pure Keys/',
-                        'Key.R': 'Sound Files/Pure Keys/',
-                        'Key.T': 'Sound Files/Pure Keys/',
-                        'Key.Y': 'Sound Files/Pure Keys/',
-                        'Key.U': 'Sound Files/Pure Keys/',
-                        'Key.I': 'Sound Files/Pure Keys/',
-                        'Key.O': 'Sound Files/Pure Keys/',
-                        'Key.P': 'Sound Files/Pure Keys/',
-                        'Key.S': 'Sound Files/Pure Keys/c#4.wav',
-                        'Key.D': 'Sound Files/Pure Keys/D#4.wav',
-                        'Key.G': 'Sound Files/Pure Keys/F#4.wav',
-                        'Key.H': 'Sound Files/Pure Keys/G#4.wav',
-                        'Key.J': 'Sound Files/Pure Keys/A#4.wav',
-                        'Key.L': 'Sound Files/Pure Keys/c#5.wav',
-                        'Key.SEMICOLON': 'Sound Files/Pure Keys/D#5.wav',
-                        'Key.Z': 'Sound Files/Pure Keys/c4.wav',
-                        'Key.X': 'Sound Files/Pure Keys/D4.wav',
-                        'Key.C': 'Sound Files/Pure Keys/E4.wav',
-                        'Key.V': 'Sound Files/Pure Keys/F4.wav',
-                        'Key.B': 'Sound Files/Pure Keys/G4.wav',
-                        'Key.N': 'Sound Files/Pure Keys/A4.wav',
-                        'Key.M': 'Sound Files/Pure Keys/B4.wav',
-                        'Key.COMMA': 'Sound Files/Pure Keys/C5.wav',
-                        'Key.PERIOD': 'Sound Files/Pure Keys/D5.wav',
-                        'Key.FORWARDSLASH': 'Sound Files/Pure Keys/E5.wav'}
-
-
-
-
-
-    def getKeyNote(self, key):
-        keyNote = self.keysounds[str(key)]
-        return keyNote
-
-    def getChannel(self, key):
-        channel = self.channels[str(key)]
-        return channel
-
-    def play(self, sound, channel):
-        channel.play(pygame.mixer.Sound(sound))
-
-    def stop(self, channel):
-        channel.fadeout(50)
 
 
 # Defining variables for colors and key sizes
@@ -225,24 +133,18 @@ def keyboard_example(layout_name: kl.LayoutName):
     # Runs Tkinter event loop until the user closes the window
     run_until_user_closes_window(window, keyboard, key_info)
 
+
 def recAudio():
     def rec():
-        fs = 48000
-        duration = 600
-        recording = sd.rec(int(duration * fs), samplerate=fs, channels=2)
-        sd.wait()
-        file_path = filedialog.asksaveasfilename(defaultextension=".flac",
-                                                 filetypes=[("FLAC files", "*.flac"), ("All files", "*.*")])
+        #recorder = Recorder
+        #recorder.startRecording()
 
-        if file_path:
-            # Save the recording to the selected file path
-            sf.write(file_path, recording, fs)
-
-    threading.Thread(target=rec).start()
+#    threading.Thread(target=rec).start()
+        print('test')
 
 if __name__ == "__main__":
     # Creating an argument parser object
-    player = BOBsHeart()
+    player = SoundGenerator.BOBsHeart()
     parser = argparse.ArgumentParser()
     parser.add_argument(
         'layout_name',
