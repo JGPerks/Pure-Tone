@@ -49,5 +49,3 @@ def startRecording():
 
     stopStream()
 
-
-startRecording()
