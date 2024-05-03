@@ -3,16 +3,23 @@ import wave
 
 
 def startRecording():
+    found = False
     chunk = 1024  # Record in chunks of 1024 samples
     sample_format = pyaudio.paInt16  # 16 bits per sample
     channels = 1
     fs = 44100  # Record at 44100 samples per second
-    dev_index = 2
+    dev_index = 0
     seconds = 5
     filename = "BOB.wav"
 
     p = pyaudio.PyAudio()  # Create an interface to PortAudio
+    # Below finds your (Stereo Mix) index and auto assigns it, print statement is for testing purposes
+    for i in range(p.get_device_count()):
+        if "Stereo" in p.get_device_info_by_index(i).get("name") and found is False:
+            dev_index = i
+            found = True
 
+    print("Your (Stereo Mix) index is: " + str(dev_index))
     print('Recording')
 
     stream = p.open(format=sample_format,
@@ -29,7 +36,7 @@ def startRecording():
         data = stream.read(chunk)
         frames.append(data)
 
-# Added to test early exit of recording
+    # Added to test early exit of recording
     def stopStream():
         # Stop and close the stream
         stream.stop_stream()
