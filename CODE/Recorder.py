@@ -5,7 +5,7 @@ import wave
 def startRecording():
     chunk = 1024  # Record in chunks of 1024 samples
     sample_format = pyaudio.paInt16  # 16 bits per sample
-    channels = 2
+    channels = 1
     fs = 44100  # Record at 44100 samples per second
     dev_index = 2
     seconds = 5
@@ -48,3 +48,6 @@ def startRecording():
         wf.close()
 
     stopStream()
+
+
+startRecording()
