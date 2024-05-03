@@ -3,9 +3,10 @@ import pygame
 class BOBsHeart:
     def __init__(self):
         pygame.mixer.init()
-        pygame.mixer.set_num_channels(34)
+        pygame.mixer.set_num_channels(35)
 
         self.channels = {
+                        'Key.DIGIT_1': pygame.mixer.Channel(34),
                         'Key.DIGIT_2': pygame.mixer.Channel(27),
                         'Key.DIGIT_3': pygame.mixer.Channel(28),
                         'Key.DIGIT_5': pygame.mixer.Channel(29),
@@ -42,6 +43,7 @@ class BOBsHeart:
                         'Key.FORWARDSLASH': pygame.mixer.Channel(26)}
 
         self.keysounds = {
+                        'Key.DIGIT_1': 'BOB.wav',
                         'Key.DIGIT_2': 'Sound Files/Long Keys/C#5_2.wav',
                         'Key.DIGIT_3': 'Sound Files/Long Keys/D#5_2.wav',
                         'Key.DIGIT_5': 'Sound Files/Long Keys/F#5.wav',
