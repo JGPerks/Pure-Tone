@@ -3,6 +3,7 @@
 - Bind keys to unique waveforms.
 - Create an oscilloscope to view waveforms.
 - Allow multiple keys/waveforms to be played at once.
+- Create start and stop recording buttons and save audio as .wav file.
 
 ## Scope
 - We will play unique waveforms binded to keys on the keyboard using Python.
