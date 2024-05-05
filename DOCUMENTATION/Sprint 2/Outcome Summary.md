@@ -7,4 +7,4 @@
 - Two buttons will be implemented, one to start recording and the other to stop recording.
 
 ## Final Product
-We intend on delivering a pure tone keyboard with a GUI to display our oscilloscope.
+We intend on delivering a pure tone keyboard with a GUI to display our oscilloscope, adding an option to either start or stop recording.
