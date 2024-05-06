@@ -32,6 +32,6 @@
 - **Diagrams Directory**:  [Diagrams]() <br>
 - **Updated Executive Summary**:  [Executive Summary Document](https://github.com/JGPerks/Pure-Tone/blob/3cb2f3cc8e1ec03c04e25a11251eea62e16a674f/DOCUMENTATION/Sprint%202/ExecutiveSummary.md) <br>
 - **Hardware Requirements**:  [Hardware Requirements](https://github.com/JGPerks/Pure-Tone/blob/3cb2f3cc8e1ec03c04e25a11251eea62e16a674f/DOCUMENTATION/Sprint%202/Hardware%20Requirements.md) <br>
-- **Software Requirements**:  [Hardware Requirements](https://github.com/JGPerks/Pure-Tone/blob/3cb2f3cc8e1ec03c04e25a11251eea62e16a674f/DOCUMENTATION/Sprint%202/Software%20Requirements.md) <br>
+- **Software Requirements**:  [Software Requirements](https://github.com/JGPerks/Pure-Tone/blob/3cb2f3cc8e1ec03c04e25a11251eea62e16a674f/DOCUMENTATION/Sprint%202/Software%20Requirements.md) <br>
 - **Expected Outcomes (according to week 2)**:  [Week 2 Outcome Goals](https://github.com/JGPerks/Pure-Tone/blob/3cb2f3cc8e1ec03c04e25a11251eea62e16a674f/DOCUMENTATION/Sprint%202/Outcome%20Summary.md) <br>
 - **Statement of Work**: [The Updated Statement of Work 2](https://github.com/JGPerks/Pure-Tone/blob/3cb2f3cc8e1ec03c04e25a11251eea62e16a674f/DOCUMENTATION/Sprint%202/Statement%20of%20Work.md)
