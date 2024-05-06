@@ -27,7 +27,7 @@
 - **Statement of Work**: [The Statement of Work](https://github.com/JGPerks/Pure-Tone/blob/19b2f89487fb8736411e0419b0052e9e3af09ce9/DOCUMENTATION/Sprint%201/Statement%20of%20Work.md)
 - **Sprint 1 Summary**: [The Work we Completed for Sprint 1](https://github.com/JGPerks/Pure-Tone/blob/f409d304f65b36b8fc343aa2a892eee7bcc1dc38/DOCUMENTATION/Sprint%201/Sprint1Summary.md)
 
-#### Part 2
+#### SPRINT 2
 - **The Basics (Whiteboard Plan 2)**:  [Week 2 Planning Image](https://github.com/JGPerks/Pure-Tone/blob/f409d304f65b36b8fc343aa2a892eee7bcc1dc38/DOCUMENTATION/Sprint%202/Sprint2Image.jpg) <br>
 - **Diagrams Directory**:  [Diagrams]() <br>
 - **Updated Executive Summary**:  [Executive Summary Document](https://github.com/JGPerks/Pure-Tone/blob/3cb2f3cc8e1ec03c04e25a11251eea62e16a674f/DOCUMENTATION/Sprint%202/ExecutiveSummary.md) <br>
