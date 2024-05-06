@@ -5,8 +5,7 @@ class BOBsHeart:
         pygame.mixer.init()
         pygame.mixer.set_num_channels(35)
 
-        self.channels = {
-                        'Key.DIGIT_1': pygame.mixer.Channel(34),
+        self.channels = {'Key.DIGIT_1': pygame.mixer.Channel(34),
                         'Key.DIGIT_2': pygame.mixer.Channel(27),
                         'Key.DIGIT_3': pygame.mixer.Channel(28),
                         'Key.DIGIT_5': pygame.mixer.Channel(29),
@@ -42,8 +41,7 @@ class BOBsHeart:
                         'Key.PERIOD': pygame.mixer.Channel(25),
                         'Key.FORWARDSLASH': pygame.mixer.Channel(26)}
 
-        self.keysounds = {
-                        'Key.DIGIT_1': 'BOB.wav',
+        self.keysounds = {'Key.DIGIT_1': 'BOB.wav',
                         'Key.DIGIT_2': 'Sound Files/Long Keys/C#5_2.wav',
                         'Key.DIGIT_3': 'Sound Files/Long Keys/D#5_2.wav',
                         'Key.DIGIT_5': 'Sound Files/Long Keys/F#5.wav',
@@ -80,9 +78,6 @@ class BOBsHeart:
                         'Key.FORWARDSLASH': 'Sound Files/Long Keys/E5.wav'}
 
 
-
-
-
     def getKeyNote(self, key):
         keyNote = self.keysounds[str(key)]
         return keyNote
@@ -97,3 +92,5 @@ class BOBsHeart:
     def stop(self, channel):
         channel.fadeout(50)
 
+    def play_file(self, file):
+        pygame.mixer.Channel(34).play(file)
