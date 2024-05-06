@@ -35,3 +35,4 @@
 - **Software Requirements**:  [Software Requirements](https://github.com/JGPerks/Pure-Tone/blob/3cb2f3cc8e1ec03c04e25a11251eea62e16a674f/DOCUMENTATION/Sprint%202/Software%20Requirements.md) <br>
 - **Expected Outcomes (according to week 2)**:  [Week 2 Outcome Goals](https://github.com/JGPerks/Pure-Tone/blob/3cb2f3cc8e1ec03c04e25a11251eea62e16a674f/DOCUMENTATION/Sprint%202/Outcome%20Summary.md) <br>
 - **Statement of Work**: [The Updated Statement of Work 2](https://github.com/JGPerks/Pure-Tone/blob/3cb2f3cc8e1ec03c04e25a11251eea62e16a674f/DOCUMENTATION/Sprint%202/Statement%20of%20Work.md)
+- **Sprint 2 Summary**: [The Work we Completed for Sprint 2](https://github.com/JGPerks/Pure-Tone/blob/a9d5373ca25095bf1995d2c6b6a798e121e9f248/DOCUMENTATION/Sprint%202/Sprint2Summary.md)
