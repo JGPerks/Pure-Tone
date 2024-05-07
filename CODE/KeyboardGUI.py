@@ -15,7 +15,7 @@ import keyboardlayout as kl
 import keyboardlayout.tkinter as klt
 
 import sounddevice as sd
-import soundfile as sf
+# import soundfile as sf
 from tkinter import Button, Label, filedialog
 # Import recording from stereo mix functionality
 import Recorder
