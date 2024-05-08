@@ -29,6 +29,8 @@ class OscilloscopeGUI:
         # Determine the font and theme
         self.AppFont = 'Any 16'
         sg.theme('DarkTeal2')
+        self.dev_index = 0
+        self.found = False
         # Create the canvas, Create horizontal progress bar, Create Listen, Stop, and Exit buttons
         self.layout = [[sg.Canvas(key='figCanvas')],
                   [sg.ProgressBar(4000, orientation='h', size=(60, 20), key='-PROG-')],
@@ -82,6 +84,12 @@ class OscilloscopeGUI:
         return (in_data, pyaudio.paContinue)
 
     def listen(self):
+
+        for i in range(self.pAud.get_device_count()):
+            if "Stereo" in self.pAud.get_device_info_by_index(i).get("name") and self.found is False:
+                self.dev_index = i
+                self.found = True
+
         self._VARS['window'].find_element('Stop').Update(disabled=False)
         self._VARS['window'].find_element('Listen').Update(disabled=True)
         self._VARS['stream'] = self.pAud.open(format=pyaudio.paInt16,
