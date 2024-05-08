@@ -21,6 +21,7 @@ class Recorder(pyaudio.PyAudio):
     def startRecording(self):
         # Create an interface to PortAudio
         self.p = pyaudio.PyAudio()
+        self.live = True
 
         # Below finds your (Stereo Mix) index and auto assigns it, print statement is for testing purposes
         for i in range(self.p.get_device_count()):
@@ -41,14 +42,17 @@ class Recorder(pyaudio.PyAudio):
         print('Recording')
 
         # Store data in chunks for X seconds
-        for i in range(0, int(self.fs / self.chunk * self.seconds)):
-            data = self.stream.read(self.chunk)
-            self.frames.append(data)
+        while self.live is True:
+            if self.live is True:
+                data = self.stream.read(self.chunk)
+                self.frames.append(data)
+            else:
+                Recorder.stopRecording(self)
 
-        Recorder.stopRecording(self)
-        # Added to test early exit of recording
+        # Added to exit early from recording
 
     def stopRecording(self):
+        self.live = False
         # Stop and close the stream
         self.stream.stop_stream()
         self.stream.close()
