@@ -5,40 +5,103 @@
 #     print('Sound Files/Pure Keys/' + i)
 
  # ----------------------------------------------------------------
+# importing tkinter module
+from tkinter import *
+from tkinter.ttk import *
 import tkinter as tk
-import PySimpleGUI as sg
+# import PySimpleGUI as sg
+root = tk.Tk()
+root.title("PySimpleGUI to Tkinter Window")
+#
+# label = tk.Label(root, text="This is a tkinter label")
+# label.pack()
+#
+# # Progress bar widget
+progress = Progressbar(root, orient=HORIZONTAL,
+                       length=4000, mode='indeterminate')
+# progress = tk.Progressbar(root, orient = tk.horizontal,
+#               length = 4000, size=(60, 20), mode = 'determinate')
+canvas_tk = tk.Canvas(root)
+listen_button = tk.Button(text='Button')
+stop_button = tk.Button(text='Stop')
+exit_button = tk.Button(text='Exit')
+layout = [canvas_tk,progress,listen_button,stop_button,exit_button],
+#
+# # self.layout = [[sg.Canvas(key='figCanvas')],
+# #                   [sg.ProgressBar(4000, orientation='h', size=(60, 20), key='-PROG-')],
+# #                   [sg.Button('Listen', font=self.AppFont),
+# #                    sg.Button('Stop', font=self.AppFont, disabled=True),
+# #                    sg.Button('Exit', font=self.AppFont)]]
+#
+#
+# root.mainloop()
 
-def tkinter_window():
-    root = tk.Tk()
-    root.title("Tkinter Window")
+# -----------------------------------------------------------------------------------
 
-    label = tk.Label(root, text="This is a tkinter label")
-    label.pack()
+#
+# # creating tkinter window
+# root = Tk()
+#
+# # Progress bar widget
+# progress = Progressbar(root, orient=HORIZONTAL,
+#                        length=100, mode='indeterminate')
+#
+#
+# Function responsible for the updation
+# of the progress bar value
+def bar():
+    import time
+    progress['value'] = 20
+    root.update_idletasks()
+    time.sleep(0.5)
 
-    root.mainloop()
+    progress['value'] = 40
+    root.update_idletasks()
+    time.sleep(0.5)
 
-import tkinter as tk
-import PySimpleGUI as sg
+    progress['value'] = 50
+    root.update_idletasks()
+    time.sleep(0.5)
 
-def pysimplegui_in_tkinter():
-    window = tk.Tk()
-    window.title("PySimpleGUI in Tkinter")
+    progress['value'] = 60
+    root.update_idletasks()
+    time.sleep(0.5)
 
-    # Define PySimpleGUI layout
-    layout = [
-        [sg.Text("This is a PySimpleGUI text element")],
-        [sg.Button("PySimpleGUI Button")]
-    ]
+    progress['value'] = 80
+    root.update_idletasks()
+    time.sleep(0.5)
 
-    # Create PySimpleGUI window within tkinter window
-    sg_window = sg.Window("PySimpleGUI Window", layout, finalize=True, element_justification='center', location=(0,0), no_titlebar=True, alpha_channel=0.0, grab_anywhere=True, keep_on_top=True, disable_close=True, resizable=True)
+    progress['value'] = 100
+    root.update_idletasks()
+    time.sleep(0.5)
 
-    while True:
-        event, values = sg_window.read(timeout=10)  # Update PySimpleGUI window
-        if event == sg.WIN_CLOSED:  # Check if PySimpleGUI window is closed
-            break
+    progress['value'] = 80
+    root.update_idletasks()
+    time.sleep(0.5)
 
-    sg_window.close()  # Close PySimpleGUI window
-    window.destroy()  # Close tkinter window
+    progress['value'] = 60
+    root.update_idletasks()
+    time.sleep(0.5)
 
-pysimplegui_in_tkinter()
+    progress['value'] = 50
+    root.update_idletasks()
+    time.sleep(0.5)
+
+    progress['value'] = 40
+    root.update_idletasks()
+    time.sleep(0.5)
+
+    progress['value'] = 20
+    root.update_idletasks()
+    time.sleep(0.5)
+    progress['value'] = 0
+
+
+progress.pack(pady=10)
+
+# This button will initialize
+# the progress bar
+Button(root, text='Start', command=bar).pack(pady=10)
+
+# infinite loop
+mainloop()
