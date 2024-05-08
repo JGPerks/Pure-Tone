@@ -17,15 +17,14 @@ import keyboardlayout.tkinter as klt
 import sounddevice as sd
 import soundfile as sf
 from tkinter import Button, Label, filedialog
-# Import recording from stereo mix functionality
-import Recorder
-
-
+# Import recording for stereo mix functionality
+from Recorder import Recorder
 
 # Defining variables for colors and key sizes
 grey = '#bebebe'
 dark_grey = '#414141'
 key_size = 100
+
 
 # Function creates visual keyboard
 def get_keyboard(window: tk.Tk, layout_name: kl.LayoutName, key_info: kl.KeyInfo) -> klt.KeyboardLayout:
@@ -48,19 +47,20 @@ def get_keyboard(window: tk.Tk, layout_name: kl.LayoutName, key_info: kl.KeyInfo
     )
     return keyboard_layout
 
+
 # Function runs loop until window is closed
 def run_until_user_closes_window(
-    window: tk.Tk,
-    keyboard: klt.KeyboardLayout,
-    released_key_info: kl.KeyInfo,
+        window: tk.Tk,
+        keyboard: klt.KeyboardLayout,
+        released_key_info: kl.KeyInfo,
 ):
     # Defines key pressed that will be lit up
     pressed_key_info = kl.KeyInfo(
         margin=14,
         color='black',
         txt_color='white',
-        txt_font=tkf.Font(family='Arial', size=key_size//4),
-        txt_padding=(key_size//6, key_size//10)
+        txt_font=tkf.Font(family='Arial', size=key_size // 4),
+        txt_padding=(key_size // 6, key_size // 10)
     )
     # Keeps track of dead key
     dead_key_pressed = False
@@ -68,7 +68,7 @@ def run_until_user_closes_window(
     # Contains all dead keys
     dead_key_keys = {kl.Key.CIRCUMFLEX, kl.Key.DIACRATICAL}
 
-# Function handles key release events
+    # Function handles key release events
     def keyup(e):
         # Obtaining key information
         key = keyboard.get_key(e)
@@ -88,7 +88,7 @@ def run_until_user_closes_window(
             keyboard.update_key(
                 kl.Key.CIRCUMFLEX, released_key_info)
 
-#Function handles key press events
+    # Function handles key press events
     def keydown(e):
         key = keyboard.get_key(e)
         keyNote = player.getKeyNote(key)
@@ -122,8 +122,8 @@ def keyboard_example(layout_name: kl.LayoutName):
         margin=10,
         color=grey,
         txt_color=dark_grey,
-        txt_font=tkf.Font(family='Arial', size=key_size//4),
-        txt_padding=(key_size//6, key_size//10)
+        txt_font=tkf.Font(family='Arial', size=key_size // 4),
+        txt_padding=(key_size // 6, key_size // 10)
     )
     # Calls and creates virtual keyboard
     keyboard = get_keyboard(window, layout_name, key_info)
@@ -131,7 +131,7 @@ def keyboard_example(layout_name: kl.LayoutName):
     button = Button(window, text="Record", command=recAudio)
     button.pack()
 
-    button2 = Button(window, text="Stop Recording", command=recAudio)
+    button2 = Button(window, text="Stop Recording", command=stopAudio)
     button2.place(x=795, y=500)
     # Runs Tkinter event loop until the user closes the window
     run_until_user_closes_window(window, keyboard, key_info)
@@ -141,13 +141,21 @@ def giveName():
     print("Unfinished")
 
 
+recorder = Recorder("BOB.wav")
+
+
 def recAudio():
     def rec():
-        recorder = Recorder
         recorder.startRecording()
 
     threading.Thread(target=rec).start()
-    print('test')
+
+
+def stopAudio():
+    def stopRec():
+        recorder.stopRecording()
+
+    threading.Thread(target=stopRec()).start()
 
 
 if __name__ == "__main__":
