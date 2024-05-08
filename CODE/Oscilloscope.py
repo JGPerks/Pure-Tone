@@ -7,8 +7,12 @@ import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 
+from Recorder import Recorder
+
 
 """ Microphone waveform display with Pyaudio, Pyplot and PysimpleGUI """
+
+
 class OscilloscopeGUI:
     def __init__(self):
         # VARS CONSTS:
@@ -78,14 +82,15 @@ class OscilloscopeGUI:
         return (in_data, pyaudio.paContinue)
 
     def listen(self):
-        self._VARS['window'].FindElement('Stop').Update(disabled=False)
-        self._VARS['window'].FindElement('Listen').Update(disabled=True)
+        self._VARS['window'].find_element('Stop').Update(disabled=False)
+        self._VARS['window'].find_element('Listen').Update(disabled=True)
         self._VARS['stream'] = self.pAud.open(format=pyaudio.paInt16,
-                                    channels=1,
-                                    rate=self.RATE,
-                                    input=True,
-                                    frames_per_buffer=self.CHUNK,
-                                    stream_callback=self.callback)
+                                              channels=1,
+                                              rate=self.RATE,
+                                              input_device_index=2,
+                                              frames_per_buffer=self.CHUNK,
+                                              input=True,
+                                              stream_callback=self.callback)
 
         self._VARS['stream'].start_stream()
 
@@ -119,6 +124,8 @@ class OscilloscopeGUI:
                 self.updatePlot(self._VARS['audioData'])
 
         self._VARS['window'].close()
+
+
 if __name__ == "__main__":
     software = OscilloscopeGUI()
     software.plot_things()
