@@ -20,6 +20,8 @@ from tkinter import Button, Label, filedialog
 # Import recording for stereo mix functionality
 from Recorder import Recorder
 
+from PIL import ImageTk, Image
+
 # Defining variables for colors and key sizes
 grey = '#bebebe'
 dark_grey = '#414141'
@@ -133,9 +135,33 @@ def keyboard_example(layout_name: kl.LayoutName):
 
     button2 = Button(window, text="Stop Recording", command=stopAudio)
     button2.place(x=795, y=500)
+
+    sine_image = Image.open("Wave Image Files\Sine Wave.PNG")
+    sine_image = sine_image.resize((200, 200), Image.BILINEAR)
+    square_image = Image.open("Wave Image Files\Square Wave.PNG")
+    square_image = sine_image.resize((200, 200), Image.BILINEAR)
+    sawtooth_image = Image.open("Wave Image Files\Sawtooth Wave.PNG")
+    sawtooth_image = sine_image.resize((200, 200), Image.BILINEAR)
+    triangle_image = Image.open("Wave Image Files\Triangle Wave.PNG")
+    triangle_image = sine_image.resize((200, 200), Image.BILINEAR)
+
+    upper_photo = ImageTk.PhotoImage(sine_image)
+
+    upper_label = tk.Label(window, image=upper_photo)
+    upper_label.pack()
+
+    lower_photo = ImageTk.PhotoImage(square_image)
+
+    lower_label = tk.Label(window, image=upper_photo)
+    lower_label.pack()
+
     # Runs Tkinter event loop until the user closes the window
     run_until_user_closes_window(window, keyboard, key_info)
 
+
+def update_wave_image(position, file):
+    # if position == upper/lower
+    pass
 
 def giveName():
     print("Unfinished")
