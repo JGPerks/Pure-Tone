@@ -27,7 +27,8 @@ stop_button.pack()
 exit_button = tk.Button(psg_tk_window, text='Exit')
 exit_button.pack()
 
-# Original layout from the Oscilloscope class
+# -----------------------------------------------------------
+# # Original layout from the Oscilloscope class
 oscilloscope_layout = [
     [sg.Canvas(key='figCanvas')],
     [sg.ProgressBar(4000, orientation='h', size=(60, 20), key='-PROG-')],
@@ -53,7 +54,7 @@ tk_window_position = "+200+200"     # Coordinates for Tkinter window
 # Finalize the PySimpleGUI window to access the TKroot
 psg_window.finalize()
 
-# Set PySimpleGUI window location
+# Set PySimpleGUI window location // CAN ADJUST
 psg_window.TKroot.geometry(f"+{psg_window_location[0]}+{psg_window_location[1]}")
 
 # Set Tkinter window location
