@@ -5,6 +5,18 @@ class BOBsHeart:
         pygame.mixer.init()
         pygame.mixer.set_num_channels(35)
 
+        self.sine3 = ['Sine Files/C#3.wav', 'Sine Files/D#3.wav', 'Sine Files/F#3.wav',
+                      'Sine Files/G#3.wav', 'Sine Files/A#3_2.wav', 'Sine Files/C#4.wav',
+                      'Sine Files/D#4.wav',
+
+                      'Sine Files/C3.wav', 'Sine Files/D3.wav', 'Sine Files/E3.wav',
+                      'Sine Files/F3.wav', 'Sine Files/G3.wav', 'Sine Files/A4.wav',
+                      'Sine Files/B4.wav', 'Sine Files/C4.wav', 'Sine Files/D4.wav',
+                      'Sine Files/E4.wav', ]
+
+
+        self.currentPitch1 = 1
+
         self.channels = {'Key.DIGIT_1': pygame.mixer.Channel(34),
                         'Key.DIGIT_2': pygame.mixer.Channel(27),
                         'Key.DIGIT_3': pygame.mixer.Channel(28),
@@ -42,40 +54,40 @@ class BOBsHeart:
                         'Key.FORWARDSLASH': pygame.mixer.Channel(26)}
 
         self.keysounds = {'Key.DIGIT_1': 'BOB.wav',
-                        'Key.DIGIT_2': 'Sound Files/Long Keys/C#5_2.wav',
-                        'Key.DIGIT_3': 'Sound Files/Long Keys/D#5_2.wav',
-                        'Key.DIGIT_5': 'Sound Files/Long Keys/F#5.wav',
-                        'Key.DIGIT_6': 'Sound Files/Long Keys/G#5_3.wav',
-                        'Key.DIGIT_7': 'Sound Files/Long Keys/A#5_2.wav',
-                        'Key.DIGIT_9': 'Sound Files/Long Keys/C#6_2.wav',
-                        'Key.DIGIT_0': 'Sound Files/Long Keys/D#6_2.wav',
-                        'Key.Q': 'Sound Files/Long Keys/C5.wav',
-                        'Key.W': 'Sound Files/Long Keys/D5.wav',
-                        'Key.E': 'Sound Files/Long Keys/E5.wav',
-                        'Key.R': 'Sound Files/Long Keys/F5.wav',
-                        'Key.T': 'Sound Files/Long Keys/G5.wav',
-                        'Key.Y': 'Sound Files/Long Keys/A5.wav',
-                        'Key.U': 'Sound Files/Long Keys/B5.wav',
-                        'Key.I': 'Sound Files/Long Keys/C6.wav',
-                        'Key.O': 'Sound Files/Long Keys/D6.wav',
-                        'Key.P': 'Sound Files/Long Keys/E6.wav',
-                        'Key.S': 'Sound Files/Long Keys/C#4_2.wav',
-                        'Key.D': 'Sound Files/Long Keys/D#4_2.wav',
-                        'Key.G': 'Sound Files/Long Keys/F#4_2.wav',
-                        'Key.H': 'Sound Files/Long Keys/G#4_2.wav',
-                        'Key.J': 'Sound Files/Long Keys/A#4_2.wav',
-                        'Key.L': 'Sound Files/Long Keys/C#5_2.wav',
-                        'Key.SEMICOLON': 'Sound Files/Long Keys/D#5_2.wav',
-                        'Key.Z': 'Sound Files/Long Keys/C4_2.wav',
-                        'Key.X': 'Sound Files/Long Keys/D4_3.wav',
-                        'Key.C': 'Sound Files/Long Keys/E4.wav',
-                        'Key.V': 'Sound Files/Long Keys/F4_2.wav',
-                        'Key.B': 'Sound Files/Long Keys/G4_3.wav',
-                        'Key.N': 'Sound Files/Long Keys/A4.wav',
-                        'Key.M': 'Sound Files/Long Keys/B4_2.wav',
-                        'Key.COMMA': 'Sound Files/Long Keys/C5.wav',
-                        'Key.PERIOD': 'Sound Files/Long Keys/D5.wav',
-                        'Key.FORWARDSLASH': 'Sound Files/Long Keys/E5.wav'}
+                        'Key.DIGIT_2': 'Sine Files/C#5.wav',
+                        'Key.DIGIT_3': 'Sine Files/D#5.wav',
+                        'Key.DIGIT_5': 'Sine Files/F#5.wav',
+                        'Key.DIGIT_6': 'Sine Files/G#5.wav',
+                        'Key.DIGIT_7': 'Sine Files/A#5.wav',
+                        'Key.DIGIT_9': 'Sine Files/C#6.wav',
+                        'Key.DIGIT_0': 'Sine Files/D#6.wav',
+                        'Key.Q': 'Sine Files/C5.wav',
+                        'Key.W': 'Sine Files/D5.wav',
+                        'Key.E': 'Sine Files/E5.wav',
+                        'Key.R': 'Sine Files/F5.wav',
+                        'Key.T': 'Sine Files/G5.wav',
+                        'Key.Y': 'Sine Files/A5.wav',
+                        'Key.U': 'Sine Files/B5.wav',
+                        'Key.I': 'Sine Files/C6.wav',
+                        'Key.O': 'Sine Files/D6.wav',
+                        'Key.P': 'Sine Files/E6.wav',
+                        'Key.S': 'Sine Files/C#4.wav',
+                        'Key.D': 'Sine Files/D#4.wav',
+                        'Key.G': 'Sine Files/F#4.wav',
+                        'Key.H': 'Sine Files/G#4.wav',
+                        'Key.J': 'Sine Files/A#4.wav',
+                        'Key.L': 'Sine Files/C#5.wav',
+                        'Key.SEMICOLON': 'Sine Files/D#5.wav',
+                        'Key.Z': 'Sine Files/C4.wav',
+                        'Key.X': 'Sine Files/D4.wav',
+                        'Key.C': 'Sine Files/E4.wav',
+                        'Key.V': 'Sine Files/F4.wav',
+                        'Key.B': 'Sine Files/G4.wav',
+                        'Key.N': 'Sine Files/A4.wav',
+                        'Key.M': 'Sine Files/B4.wav',
+                        'Key.COMMA': 'Sine Files/C5.wav',
+                        'Key.PERIOD': 'Sine Files/D5.wav',
+                        'Key.FORWARDSLASH': 'Sine Files/E5.wav'}
 
 
     def getKeyNote(self, key):
@@ -85,6 +97,14 @@ class BOBsHeart:
     def getChannel(self, key):
         channel = self.channels[str(key)]
         return channel
+
+    def changePitch(self):
+        for key in self.keysounds:
+            pass
+
+
+    def changeWave(self, ):
+        pass
 
     def play(self, sound, channel):
         channel.play(pygame.mixer.Sound(sound))
