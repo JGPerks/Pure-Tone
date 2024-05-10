@@ -4,7 +4,7 @@
 >
 1. Downloaded the Git (You can clone or download the Zip File)
 2. Install the dependencies / libraries
-     (You may have to change some of the file paths for OS differences). For example, in Linux you may have to change some of the backslashes to forwardslashes. 
+     Operating System the software is catered toward is Windows. (You may have to change some of the file paths for OS differences). For example, in Linux you may have to change some of the backslashes to forwardslashes. 
 3. Run the file from terminal (run python3 and then the file path name) OR you can run using your Python IDE (PyCharm)
 4. Further to the step above, open the Keyboard Main For Real Final I promise legit version 2.py (AKA the main .py file to run).
 5. Start jamming!
