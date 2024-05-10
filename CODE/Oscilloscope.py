@@ -95,7 +95,7 @@ class OscilloscopeGUI:
         self._VARS['stream'] = self.pAud.open(format=pyaudio.paInt16,
                                               channels=1,
                                               rate=self.RATE,
-                                              input_device_index=2,
+                                              input_device_index=self.dev_index,
                                               frames_per_buffer=self.CHUNK,
                                               input=True,
                                               stream_callback=self.callback)
