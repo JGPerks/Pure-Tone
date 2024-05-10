@@ -130,11 +130,8 @@ def keyboard_example(layout_name: kl.LayoutName):
     # Calls and creates virtual keyboard
     keyboard = get_keyboard(window, layout_name, key_info)
 
-    button = Button(window, text="Record", command=recAudio)
+    button = Button(window, text="Record", command=lambda: recAudio(button))
     button.pack()
-
-    button2 = Button(window, text="Stop Recording", command=stopAudio)
-    button2.place(x=795, y=500)
 
     sine_image = Image.open("Wave Image Files\Sine Wave.PNG")
     sine_image = sine_image.resize((200, 200), Image.BILINEAR)
@@ -166,23 +163,29 @@ def update_wave_image(position, file):
 def giveName():
     print("Unfinished")
 
+def toggleButton(button):
+    if recorder.live is True:
+        button.config(text="Stop Recording", command=lambda: stopAudio(button))
+    else:
+        button.config(text="Record", command=lambda: recAudio(button))
+
 
 recorder = Recorder("BOB.wav")
 
 
-def recAudio():
+def recAudio(button):
     def rec():
         recorder.startRecording()
 
     threading.Thread(target=rec).start()
+    toggleButton(button)
 
-
-def stopAudio():
+def stopAudio(button):
     def stopRec():
         recorder.stopRecording()
 
     threading.Thread(target=stopRec()).start()
-
+    toggleButton(button)
 
 if __name__ == "__main__":
     # Creating an argument parser object
