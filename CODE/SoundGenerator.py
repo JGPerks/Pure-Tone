@@ -5,14 +5,15 @@ class BOBsHeart:
         pygame.mixer.init()
         pygame.mixer.set_num_channels(35)
 
-        self.sine3 = ['Sine Files/C#3.wav', 'Sine Files/D#3.wav', 'Sine Files/F#3.wav',
+        self.pitches = ['Sine Files/C#3.wav', 'Sine Files/D#3.wav', 'Sine Files/F#3.wav',
                       'Sine Files/G#3.wav', 'Sine Files/A#3_2.wav', 'Sine Files/C#4.wav',
                       'Sine Files/D#4.wav',
-
                       'Sine Files/C3.wav', 'Sine Files/D3.wav', 'Sine Files/E3.wav',
                       'Sine Files/F3.wav', 'Sine Files/G3.wav', 'Sine Files/A4.wav',
                       'Sine Files/B4.wav', 'Sine Files/C4.wav', 'Sine Files/D4.wav',
-                      'Sine Files/E4.wav', ]
+                      'Sine Files/E4.wav']
+
+        self.filepaths = ['Saw Files/', 'Sine Files/', 'Triangle wave files/']
 
 
         self.currentPitch1 = 1
