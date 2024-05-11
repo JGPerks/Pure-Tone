@@ -12,7 +12,9 @@ import tkinter.font as tkf
 
 # Importing custom keyboard modules for Tkinter and layout
 import keyboardlayout as kl
-import keyboardlayout.tkinter as klt
+
+# DO NOT USE THIS LIBRARY FILE: [import keyboardlayout.tkinter as klt], use following line instead
+import keayboardlayout_with_place_instead_pack as klt
 
 import sounddevice as sd
 import soundfile as sf
@@ -25,7 +27,7 @@ from PIL import ImageTk, Image
 # Defining variables for colors and key sizes
 grey = '#bebebe'
 dark_grey = '#414141'
-key_size = 100
+key_size = 75
 
 
 # Function creates visual keyboard
@@ -117,7 +119,8 @@ def run_until_user_closes_window(
 # Function creates example of visual keyboard
 def keyboard_example(layout_name: kl.LayoutName):
     window = tk.Tk()
-    window.resizable(False, False)
+    window.resizable(True, True)
+    window.minsize(window.winfo_screenwidth(), window.winfo_screenheight())
 
     # Defines key information
     key_info = kl.KeyInfo(
@@ -135,22 +138,33 @@ def keyboard_example(layout_name: kl.LayoutName):
 
     sine_image = Image.open("Wave Image Files\Sine Wave.PNG")
     sine_image = sine_image.resize((200, 200), Image.BILINEAR)
+    sine_image = ImageTk.PhotoImage(sine_image)
     square_image = Image.open("Wave Image Files\Square Wave.PNG")
-    square_image = sine_image.resize((200, 200), Image.BILINEAR)
+    square_image = square_image.resize((200, 200), Image.BILINEAR)
+    square_image = ImageTk.PhotoImage(square_image)
     sawtooth_image = Image.open("Wave Image Files\Sawtooth Wave.PNG")
-    sawtooth_image = sine_image.resize((200, 200), Image.BILINEAR)
+    sawtooth_image = sawtooth_image.resize((200, 200), Image.BILINEAR)
+    sawtooth_image = ImageTk.PhotoImage(sawtooth_image)
     triangle_image = Image.open("Wave Image Files\Triangle Wave.PNG")
-    triangle_image = sine_image.resize((200, 200), Image.BILINEAR)
+    triangle_image = triangle_image.resize((200, 200), Image.BILINEAR)
+    triangle_image = ImageTk.PhotoImage(triangle_image)
 
-    upper_photo = ImageTk.PhotoImage(sine_image)
+    current_wave_upper = sine_image
+    current_wave_lower = sine_image
 
-    upper_label = tk.Label(window, image=upper_photo)
-    upper_label.pack()
+    waves = {"sawtooth": "Sawtooth Wave.PNG", "sine": "Sine Wave.PNG", "square": "Square Wave.PNG",
+             "triangle": "Triangle Wave.PNG"}
+    wave_tuple = ("Sawtooth Wave.PNG", "Sine Wave.PNG", "Square Wave.PNG", "Triangle Wave.PNG")
+    wave_images_tuple = (sine_image, square_image, sawtooth_image, triangle_image)
 
-    lower_photo = ImageTk.PhotoImage(square_image)
 
-    lower_label = tk.Label(window, image=upper_photo)
-    lower_label.pack()
+    upper_label = tk.Label(window, image=sine_image)
+    upper_label.place(x=1125, y=0)
+
+    # lower_photo = ImageTk.PhotoImage(square_image)
+
+    lower_label = tk.Label(window, image=sine_image)
+    lower_label.place(x=1125, y=200)
 
     # Runs Tkinter event loop until the user closes the window
     run_until_user_closes_window(window, keyboard, key_info)
@@ -159,6 +173,27 @@ def keyboard_example(layout_name: kl.LayoutName):
 def update_wave_image(position, file):
     # if position == upper/lower
     pass
+
+
+def increment_wave_indicator(current_image):
+    index = wave_images_tuple.index(current_image)
+    index += 1
+    index %= 3
+    new_image = wave_tuple[index]
+
+    return new_image
+
+
+def decrement_wave_indicator(current_image):
+    index = wave_images_tuple.index(current_image)
+    index -= 1
+    if index < 0:
+        index = len(wave_images_tuple) - 1
+    index %= 3
+    new_image = wave_tuple[index]
+
+    return new_image
+
 
 def giveName():
     print("Unfinished")
