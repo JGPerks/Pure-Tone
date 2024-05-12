@@ -4,7 +4,7 @@ The Big Oil Beats (BOB) Pure Tone Keyboard allows for users to see which keys pr
 Summary: The keyboard is split into two main sections of both letter notes and their sharp versions.  
 The user can change the octave and the waveform of a specific section.  The diagram below shows this. Usable keys are documented as light grey. 
 
-To play: The number and QWER rows are one section. The ASDF and ZXCV rows being the second section. If you press the buttons they will make a noise. The noise is that of a keyboard. The idea is to have a keyboard instrument. The keyboard rows are seperated so the user can somewhat customize the keyboard, wave type, and playing abilities to their liking. 
+Highlighted in grey/To play: The number and QWER rows are one section. The ASDF and ZXCV rows being the second section. If you press the buttons they will make a noise. The noise is that of a keyboard. The idea is to have a keyboard instrument. The keyboard rows are seperated so the user can somewhat customize the keyboard, wave type, and playing abilities to their liking. 
 
 Highlighted in blue: Buttons on either end of the letter note rows (Tab and left bracket for top section, Lshift 
 and Rshift for bottom section) are used to shift the pitch of the section up (right key) or down (left key). 
