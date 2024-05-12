@@ -206,7 +206,9 @@ def toggleButton(button):
         button.config(text="Record", command=lambda: recAudio(button))
 
 
-recorder = Recorder("BOB.wav")
+# recorder = Recorder("BOB.wav")
+# recorder = Recorder("BOB.wav.wav")
+recorder = Recorder()
 
 
 def recAudio(button):
