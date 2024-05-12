@@ -4,7 +4,6 @@ import threading
 
 from playsound import playsound
 import SoundGenerator
-import time as t
 
 # Importing Tkinter for GUI
 import tkinter as tk
@@ -206,11 +205,10 @@ def toggleButton(button):
         button.config(text="Record", command=lambda: recAudio(button))
 
 
-<<<<<<< HEAD
-# recorder = Recorder("BOB.wav")
-# recorder = Recorder("BOB.wav.wav")
-=======
->>>>>>> 1e322134a351bb793df5ac6c88efb6c10da476ca
+# <<<<<<< HEAD
+# # recorder = Recorder("BOB.wav")
+# =======
+# >>>>>>> 1e322134a351bb793df5ac6c88efb6c10da476ca
 recorder = Recorder()
 
 
