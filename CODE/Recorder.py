@@ -4,7 +4,7 @@ import time
 
 
 class Recorder(pyaudio.PyAudio):
-    def __init__(self, filename):
+    def __init__(self):
         super().__init__()
         self.startTime = 0
         self.endTime = 0
@@ -18,15 +18,14 @@ class Recorder(pyaudio.PyAudio):
         self.channels = 1
         self.rate = 44100  # Record at 44100 samples per second
         self.dev_index = 0
-        self.filename = str(filename)
+        self.filename = None
 
-    def startRecording(self):
+    def startRecording(self, name):
         # Create an interface to PortAudio
         self.p = pyaudio.PyAudio()
         self.live = True
         self.startTime = time.time()
         self.filename = "Saved Songs/" + name + ".wav"
-
 
         # Below finds your (Stereo Mix) index and auto assigns it, print statement is for testing purposes
         for i in range(self.p.get_device_count()):
