@@ -186,8 +186,11 @@ def run_until_user_closes_window(
     def keyup(e):
         # Obtaining key information
         key = keyboard.get_key(e)
-        channel = player.getChannel(key)
-        player.stop(channel)
+        try:
+            channel = player.getChannel(key)
+            player.stop(channel)
+        except KeyError:
+            print()
         # Verify key is part of virtual keyboard
         if key is None:
             return

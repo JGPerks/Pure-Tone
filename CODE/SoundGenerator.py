@@ -9,7 +9,7 @@ class BOBsHeart:
                       'C3.wav', 'D3.wav', 'E3.wav', 'F3.wav', 'G3.wav', 'A3.wav', 'B3.wav', 'C4.wav', 'D4.wav', 'E4.wav'],
                         ['C#4.wav', 'D#4.wav', "F#4.wav", 'G#4.wav', 'A#4.wav', 'C#5.wav', 'D#5.wav',
                       'C4.wav', 'D4.wav', 'E4.wav', 'F4.wav', 'G4.wav', 'A4.wav', 'B4.wav', 'C5.wav', 'D5.wav', 'E5.wav'],
-                        ['C#5.wav', 'D#5.wav', 'F#5.wav', 'G#5.wav', 'A#5.wav', 'C#6.wav', 'D#6.wav'
+                        ['C#5.wav', 'D#5.wav', 'F#5.wav', 'G#5.wav', 'A#5.wav', 'C#6.wav', 'D#6.wav',
                       'C5.wav', 'D5.wav', 'E5.wav', 'F5.wav', 'G5.wav', 'A5.wav', 'B5.wav', 'C6.wav', 'D6.wav', 'E6.wav']]
 
         self.filepaths = ['Saw Files/', 'Sine Files/', 'Triangle wave files/', 'Square Files/']
@@ -129,68 +129,73 @@ class BOBsHeart:
 
     def checkKey(self, key):
         key = str(key)
-        pitchShifters = ['Key.DIGIT_1', 'Key.LEFTBRACKET', 'Key.LEFT_SHIFT', 'Key.RIGHT_SHIFT']
-        waveShifters = ['Key.RIGHTBRACKET', 'Key.BACKSLASH', 'Key.LEFT_ALT', 'Key.SPACE']
+        pitchShifters = ['Key.DIGIT_1', 'Key.LEFTBRACKET', 'Key.A', 'Key.F']
+        waveShifters = ['Key.RIGHTBRACKET', 'Key.BACKSLASH', 'Key.SINGLEQUOTE', 'Key.RETURN']
 
         if key in pitchShifters:
-            print(True)
+            print('Pitch')
             self.switchPitch(key)
         elif key in waveShifters:
-            print(True)
+            print('Wave')
             self.switchWave(key)
         else:
-            print(False)
-            keyNote = self.getKeyNote(key)
-            channel = self.getChannel(key)
+            print('Sound')
+            try:
+                keyNote = self.getKeyNote(key)
+                channel = self.getChannel(key)
+            except KeyError:
+                print()
             if channel.get_busy() == False:
                 self.play(keyNote, channel)
 
     def switchPitch(self, key):
         keyCount = 0
         if key == 'Key.LEFTBRACKET':
-            pitch = self.pitches[self.currentPitchTop]
-
-            for i in self.topKeys:
-                self.keysounds[i] = self.filepaths[self.currentPathTop] + pitch[keyCount]
-                print(i, keyCount, pitch[keyCount])
-                keyCount += 1
-
             self.currentPitchTop += 1
             if self.currentPitchTop > 2:
                 self.currentPitchTop = 0
-
-        elif key == 'Key.DIGIT_1':
             pitch = self.pitches[self.currentPitchTop]
+
             for i in self.topKeys:
                 self.keysounds[i] = self.filepaths[self.currentPathTop] + pitch[keyCount]
-                print(i, keyCount, pitch[keyCount])
                 keyCount += 1
 
+
+
+
+        elif key == 'Key.DIGIT_1':
             self.currentPitchTop -= 1
             if self.currentPitchTop < 0:
                 self.currentPitchTop = 2
-
-        elif key == 'Key.LEFT_SHIFT':
-            pitch = self.pitches[self.currentPitchBottom]
-            for i in self.bottomKeys:
-                self.keysounds[i] = self.filepaths[self.currentPathBottom] + pitch[keyCount]
-                print(i, keyCount, pitch[keyCount])
+            pitch = self.pitches[self.currentPitchTop]
+            for i in self.topKeys:
+                self.keysounds[i] = self.filepaths[self.currentPathTop] + pitch[keyCount]
                 keyCount += 1
 
-            self.currentPitchTop -= 1
+
+
+        elif key == 'Key.A':
+            self.currentPitchBottom -= 1
             if self.currentPitchBottom < 0:
                 self.currentPitchBottom = 2
-
-        else:
             pitch = self.pitches[self.currentPitchBottom]
             for i in self.bottomKeys:
                 self.keysounds[i] = self.filepaths[self.currentPathBottom] + pitch[keyCount]
-                print(i, keyCount, pitch[keyCount])
                 keyCount += 1
 
-            self.currentPitchTop += 1
+
+
+        elif key == 'Key.F':
+            self.currentPitchBottom += 1
             if self.currentPitchBottom > 2:
                 self.currentPitchBottom = 0
+            pitch = self.pitches[self.currentPitchBottom]
+            for i in self.bottomKeys:
+                self.keysounds[i] = self.filepaths[self.currentPathBottom] + pitch[keyCount]
+                keyCount += 1
+
+
+
         print(self.currentPitchTop, self.currentPitchBottom)
 
 
@@ -210,7 +215,6 @@ class BOBsHeart:
 
             for i in self.topKeys:
                 self.keysounds[i] = self.filepaths[self.currentPathTop] + pitch[keyCount]
-                print(i, keyCount, pitch[keyCount])
                 keyCount += 1
 
 
@@ -222,32 +226,29 @@ class BOBsHeart:
 
             for i in self.topKeys:
                 self.keysounds[i] = self.filepaths[self.currentPathTop] + pitch[keyCount]
-                print(i, keyCount, pitch[keyCount])
                 keyCount += 1
 
-        elif key == 'Key.LEFT_ALT':
+        elif key == 'Key.SINGLEQUOTE':
             self.currentPathBottom -= 1
             if self.currentPathBottom < 0:
                 self.currentPathBottom = 3
+            print(self.currentPathBottom)
             pitch = self.pitches[self.currentPitchBottom]
 
-            for i in self.topKeys:
+            for i in self.bottomKeys:
                 self.keysounds[i] = self.filepaths[self.currentPathBottom] + pitch[keyCount]
-                print(i, keyCount, pitch[keyCount])
                 keyCount += 1
 
         else:
             self.currentPathBottom += 1
             if self.currentPathBottom > 3:
                 self.currentPathBottom = 0
+            print(self.currentPathBottom)
             pitch = self.pitches[self.currentPitchBottom]
 
-            for i in self.topKeys:
-                self.keysounds[i] = self.filepaths[self.currentPathTop] + pitch[keyCount]
-                print(i, keyCount, pitch[keyCount])
+            for i in self.bottomKeys:
+                self.keysounds[i] = self.filepaths[self.currentPathBottom] + pitch[keyCount]
                 keyCount += 1
-
-
 
     def getKeyNote(self, key):
         keyNote = self.keysounds[str(key)]
@@ -256,14 +257,6 @@ class BOBsHeart:
     def getChannel(self, key):
         channel = self.channels[str(key)]
         return channel
-
-    def changePitch(self):
-        for key in self.keysounds:
-            pass
-
-
-    def changeWave(self, ):
-        pass
 
     def play(self, sound, channel):
         channel.play(pygame.mixer.Sound(sound))
