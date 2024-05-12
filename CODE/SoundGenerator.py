@@ -1,5 +1,5 @@
 import pygame
-
+print()
 class BOBsHeart:
     def __init__(self):
         pygame.mixer.init()
@@ -133,20 +133,19 @@ class BOBsHeart:
         waveShifters = ['Key.RIGHTBRACKET', 'Key.BACKSLASH', 'Key.SINGLEQUOTE', 'Key.RETURN']
 
         if key in pitchShifters:
-            print('Pitch')
             self.switchPitch(key)
+
         elif key in waveShifters:
-            print('Wave')
             self.switchWave(key)
+
         else:
-            print('Sound')
             try:
                 keyNote = self.getKeyNote(key)
                 channel = self.getChannel(key)
+                if channel.get_busy() == False:
+                    self.play(keyNote, channel)
             except KeyError:
                 print()
-            if channel.get_busy() == False:
-                self.play(keyNote, channel)
 
     def switchPitch(self, key):
         keyCount = 0
@@ -160,9 +159,6 @@ class BOBsHeart:
                 self.keysounds[i] = self.filepaths[self.currentPathTop] + pitch[keyCount]
                 keyCount += 1
 
-
-
-
         elif key == 'Key.DIGIT_1':
             self.currentPitchTop -= 1
             if self.currentPitchTop < 0:
@@ -171,8 +167,6 @@ class BOBsHeart:
             for i in self.topKeys:
                 self.keysounds[i] = self.filepaths[self.currentPathTop] + pitch[keyCount]
                 keyCount += 1
-
-
 
         elif key == 'Key.A':
             self.currentPitchBottom -= 1
@@ -183,8 +177,6 @@ class BOBsHeart:
                 self.keysounds[i] = self.filepaths[self.currentPathBottom] + pitch[keyCount]
                 keyCount += 1
 
-
-
         elif key == 'Key.F':
             self.currentPitchBottom += 1
             if self.currentPitchBottom > 2:
@@ -193,17 +185,6 @@ class BOBsHeart:
             for i in self.bottomKeys:
                 self.keysounds[i] = self.filepaths[self.currentPathBottom] + pitch[keyCount]
                 keyCount += 1
-
-
-
-        print(self.currentPitchTop, self.currentPitchBottom)
-
-
-
-
-
-
-
 
     def switchWave(self, key):
         keyCount = 0
@@ -232,7 +213,6 @@ class BOBsHeart:
             self.currentPathBottom -= 1
             if self.currentPathBottom < 0:
                 self.currentPathBottom = 3
-            print(self.currentPathBottom)
             pitch = self.pitches[self.currentPitchBottom]
 
             for i in self.bottomKeys:
@@ -243,7 +223,6 @@ class BOBsHeart:
             self.currentPathBottom += 1
             if self.currentPathBottom > 3:
                 self.currentPathBottom = 0
-            print(self.currentPathBottom)
             pitch = self.pitches[self.currentPitchBottom]
 
             for i in self.bottomKeys:
