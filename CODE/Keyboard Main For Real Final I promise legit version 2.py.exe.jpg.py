@@ -21,6 +21,7 @@ import soundfile as sf
 from tkinter import Button, Label, filedialog
 # Import recording for stereo mix functionality
 from Recorder import Recorder
+from tkinter import simpledialog
 
 from PIL import ImageTk, Image
 
@@ -209,8 +210,9 @@ recorder = Recorder("BOB.wav")
 
 
 def recAudio(button):
+    name = simpledialog.askstring("Input", "What would you like to call this masterpiece: ")
     def rec():
-        recorder.startRecording()
+        recorder.startRecording(name)
 
     threading.Thread(target=rec).start()
     toggleButton(button)
