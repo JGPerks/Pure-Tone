@@ -77,8 +77,11 @@ def run_until_user_closes_window(
     def keyup(e):
         # Obtaining key information
         key = keyboard.get_key(e)
-        channel = player.getChannel(key)
-        player.stop(channel)
+        try:
+            channel = player.getChannel(key)
+            player.stop(channel)
+        except KeyError:
+            print()
         # Verify key is part of virtual keyboard
         if key is None:
             return
@@ -96,10 +99,7 @@ def run_until_user_closes_window(
     # Function handles key press events
     def keydown(e):
         key = keyboard.get_key(e)
-        keyNote = player.getKeyNote(key)
-        channel = player.getChannel(key)
-        if channel.get_busy() == False:
-            player.play(keyNote, channel)
+        player.checkKey(key)
         if key is None:
             return
         keyboard.update_key(key, pressed_key_info)
@@ -206,7 +206,7 @@ def toggleButton(button):
         button.config(text="Record", command=lambda: recAudio(button))
 
 
-recorder = Recorder("BOB.wav")
+recorder = Recorder()
 
 
 def recAudio(button):
