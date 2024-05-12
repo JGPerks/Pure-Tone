@@ -5,18 +5,55 @@ class BOBsHeart:
         pygame.mixer.init()
         pygame.mixer.set_num_channels(35)
 
-        self.pitches = ['Sine Files/C#3.wav', 'Sine Files/D#3.wav', 'Sine Files/F#3.wav',
-                      'Sine Files/G#3.wav', 'Sine Files/A#3_2.wav', 'Sine Files/C#4.wav',
-                      'Sine Files/D#4.wav',
-                      'Sine Files/C3.wav', 'Sine Files/D3.wav', 'Sine Files/E3.wav',
-                      'Sine Files/F3.wav', 'Sine Files/G3.wav', 'Sine Files/A4.wav',
-                      'Sine Files/B4.wav', 'Sine Files/C4.wav', 'Sine Files/D4.wav',
-                      'Sine Files/E4.wav']
+        self.pitches = [['C#3.wav', 'D#3.wav', 'F#3.wav', 'G#3.wav', 'A#3.wav', 'C#4.wav', 'D#4.wav',
+                      'C3.wav', 'D3.wav', 'E3.wav', 'F3.wav', 'G3.wav', 'A3.wav', 'B3.wav', 'C4.wav', 'D4.wav', 'E4.wav'],
+                        ['C#4.wav', 'D#4.wav', "F#4.wav", 'G#4.wav', 'A#4.wav', 'C#5.wav', 'D#5.wav',
+                      'C4.wav', 'D4.wav', 'E4.wav', 'F4.wav', 'G4.wav', 'A4.wav', 'B4.wav', 'C5.wav', 'D5.wav', 'E5.wav'],
+                        ['C#5.wav', 'D#5.wav', 'F#5.wav', 'G#5.wav', 'A#5.wav', 'C#6.wav', 'D#6.wav'
+                      'C5.wav', 'D5.wav', 'E5.wav', 'F5.wav', 'G5.wav', 'A5.wav', 'B5.wav', 'C6.wav', 'D6.wav', 'E6.wav']]
 
-        self.filepaths = ['Saw Files/', 'Sine Files/', 'Triangle wave files/']
+        self.filepaths = ['Saw Files/', 'Sine Files/', 'Triangle wave files/', 'Square Files/']
+
+        self.topKeys = ['Key.DIGIT_2',
+                   'Key.DIGIT_3',
+                   'Key.DIGIT_5',
+                   'Key.DIGIT_6',
+                   'Key.DIGIT_7',
+                   'Key.DIGIT_9',
+                   'Key.DIGIT_0',
+                   'Key.Q',
+                   'Key.W',
+                   'Key.E',
+                   'Key.R',
+                   'Key.T',
+                   'Key.Y',
+                   'Key.U',
+                   'Key.I',
+                   'Key.O',
+                   'Key.P']
+        self.bottomKeys = ['Key.S',
+                      'Key.D',
+                      'Key.G',
+                      'Key.H',
+                      'Key.J',
+                      'Key.L',
+                      'Key.SEMICOLON',
+                      'Key.Z',
+                      'Key.X',
+                      'Key.C',
+                      'Key.V',
+                      'Key.B',
+                      'Key.N',
+                      'Key.M',
+                      'Key.COMMA',
+                      'Key.PERIOD',
+                      'Key.FORWARDSLASH']
 
 
-        self.currentPitch1 = 1
+        self.currentPitchTop = 1
+        self.currentPitchBottom = 2
+        self.currentPathTop = 1
+        self.currentPathBottom = 1
 
         self.channels = {'Key.DIGIT_1': pygame.mixer.Channel(34),
                         'Key.DIGIT_2': pygame.mixer.Channel(27),
@@ -54,7 +91,7 @@ class BOBsHeart:
                         'Key.PERIOD': pygame.mixer.Channel(25),
                         'Key.FORWARDSLASH': pygame.mixer.Channel(26)}
 
-        self.keysounds = {'Key.DIGIT_1': 'BOB.wav',
+        self.keysounds = {
                         'Key.DIGIT_2': 'Sine Files/C#5.wav',
                         'Key.DIGIT_3': 'Sine Files/D#5.wav',
                         'Key.DIGIT_5': 'Sine Files/F#5.wav',
@@ -89,6 +126,127 @@ class BOBsHeart:
                         'Key.COMMA': 'Sine Files/C5.wav',
                         'Key.PERIOD': 'Sine Files/D5.wav',
                         'Key.FORWARDSLASH': 'Sine Files/E5.wav'}
+
+    def checkKey(self, key):
+        key = str(key)
+        pitchShifters = ['Key.DIGIT_1', 'Key.LEFTBRACKET', 'Key.LEFT_SHIFT', 'Key.RIGHT_SHIFT']
+        waveShifters = ['Key.RIGHTBRACKET', 'Key.BACKSLASH', 'Key.LEFT_ALT', 'Key.SPACE']
+
+        if key in pitchShifters:
+            print(True)
+            self.switchPitch(key)
+        elif key in waveShifters:
+            print(True)
+            self.switchWave(key)
+        else:
+            print(False)
+            keyNote = self.getKeyNote(key)
+            channel = self.getChannel(key)
+            if channel.get_busy() == False:
+                self.play(keyNote, channel)
+
+    def switchPitch(self, key):
+        keyCount = 0
+        if key == 'Key.LEFTBRACKET':
+            pitch = self.pitches[self.currentPitchTop]
+
+            for i in self.topKeys:
+                self.keysounds[i] = self.filepaths[self.currentPathTop] + pitch[keyCount]
+                print(i, keyCount, pitch[keyCount])
+                keyCount += 1
+
+            self.currentPitchTop += 1
+            if self.currentPitchTop > 2:
+                self.currentPitchTop = 0
+
+        elif key == 'Key.DIGIT_1':
+            pitch = self.pitches[self.currentPitchTop]
+            for i in self.topKeys:
+                self.keysounds[i] = self.filepaths[self.currentPathTop] + pitch[keyCount]
+                print(i, keyCount, pitch[keyCount])
+                keyCount += 1
+
+            self.currentPitchTop -= 1
+            if self.currentPitchTop < 0:
+                self.currentPitchTop = 2
+
+        elif key == 'Key.LEFT_SHIFT':
+            pitch = self.pitches[self.currentPitchBottom]
+            for i in self.bottomKeys:
+                self.keysounds[i] = self.filepaths[self.currentPathBottom] + pitch[keyCount]
+                print(i, keyCount, pitch[keyCount])
+                keyCount += 1
+
+            self.currentPitchTop -= 1
+            if self.currentPitchBottom < 0:
+                self.currentPitchBottom = 2
+
+        else:
+            pitch = self.pitches[self.currentPitchBottom]
+            for i in self.bottomKeys:
+                self.keysounds[i] = self.filepaths[self.currentPathBottom] + pitch[keyCount]
+                print(i, keyCount, pitch[keyCount])
+                keyCount += 1
+
+            self.currentPitchTop += 1
+            if self.currentPitchBottom > 2:
+                self.currentPitchBottom = 0
+        print(self.currentPitchTop, self.currentPitchBottom)
+
+
+
+
+
+
+
+
+    def switchWave(self, key):
+        keyCount = 0
+        if key == 'Key.RIGHTBRACKET':
+            self.currentPathTop -=1
+            if self.currentPathTop < 0:
+                self.currentPathTop = 3
+            pitch = self.pitches[self.currentPitchTop]
+
+            for i in self.topKeys:
+                self.keysounds[i] = self.filepaths[self.currentPathTop] + pitch[keyCount]
+                print(i, keyCount, pitch[keyCount])
+                keyCount += 1
+
+
+        elif key == 'Key.BACKSLASH':
+            self.currentPathTop += 1
+            if self.currentPathTop > 3:
+                self.currentPathTop = 0
+            pitch = self.pitches[self.currentPitchTop]
+
+            for i in self.topKeys:
+                self.keysounds[i] = self.filepaths[self.currentPathTop] + pitch[keyCount]
+                print(i, keyCount, pitch[keyCount])
+                keyCount += 1
+
+        elif key == 'Key.LEFT_ALT':
+            self.currentPathBottom -= 1
+            if self.currentPathBottom < 0:
+                self.currentPathBottom = 3
+            pitch = self.pitches[self.currentPitchBottom]
+
+            for i in self.topKeys:
+                self.keysounds[i] = self.filepaths[self.currentPathBottom] + pitch[keyCount]
+                print(i, keyCount, pitch[keyCount])
+                keyCount += 1
+
+        else:
+            self.currentPathBottom += 1
+            if self.currentPathBottom > 3:
+                self.currentPathBottom = 0
+            pitch = self.pitches[self.currentPitchBottom]
+
+            for i in self.topKeys:
+                self.keysounds[i] = self.filepaths[self.currentPathTop] + pitch[keyCount]
+                print(i, keyCount, pitch[keyCount])
+                keyCount += 1
+
 
 
     def getKeyNote(self, key):
