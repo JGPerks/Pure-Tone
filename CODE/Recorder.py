@@ -25,6 +25,8 @@ class Recorder(pyaudio.PyAudio):
         self.p = pyaudio.PyAudio()
         self.live = True
         self.startTime = time.time()
+        self.filename = "Saved Songs/" + name + ".wav"
+
 
         # Below finds your (Stereo Mix) index and auto assigns it, print statement is for testing purposes
         for i in range(self.p.get_device_count()):
