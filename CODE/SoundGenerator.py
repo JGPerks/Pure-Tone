@@ -245,3 +245,9 @@ class BOBsHeart:
 
     def play_file(self, file):
         pygame.mixer.Channel(34).play(file)
+
+    def getTopPath(self):
+        return self.currentPathTop
+
+    def getBottomPath(self):
+        return self.currentPathBottom
