@@ -39,3 +39,9 @@
 
 #### SPRINT 3
 - **Final Design Idea**:  [Waveform Changing and New Keyboard Layout](https://github.com/JGPerks/Pure-Tone/blob/dc7fb6fe1cd91b97370afa5ed55129c5361dc226/DESIGN/Waveform%20Changing.md) <br>
+- **User Manual**: [User Guide (step-by-step](https://github.com/JGPerks/Pure-Tone/blob/d1a8385e21a3d5484742dced8da6b33e5f70e284/DOCUMENTATION/Sprint%203/UserGuide.md)
+- **Explanatory Document**: [Explaining BOB's Pure Tone Keyboard](https://github.com/JGPerks/Pure-Tone/blob/d1a8385e21a3d5484742dced8da6b33e5f70e284/DOCUMENTATION/Sprint%203/ExplanatoryDocument.md)
+- **How to Record**: [Recorder Guide](https://github.com/JGPerks/Pure-Tone/blob/d1a8385e21a3d5484742dced8da6b33e5f70e284/DOCUMENTATION/Sprint%203/Recorder%20Guide.md)
+- **Testing Documentation**: [Download testing sheet here](https://github.com/JGPerks/Pure-Tone/blob/d1a8385e21a3d5484742dced8da6b33e5f70e284/DOCUMENTATION/Sprint%203/TestingDocumentPureTone.xlsx)
+- **Presentation Slides**: [Download presentation (as images) here](https://github.com/JGPerks/Pure-Tone/blob/d1a8385e21a3d5484742dced8da6b33e5f70e284/DOCUMENTATION/Sprint%203/Pure%20Tone%20Keyboard%20Slides%20Images.zip)
+- **Sprint 3 Summary**: [The Work we Completed for Sprint 3](https://github.com/JGPerks/Pure-Tone/blob/d1a8385e21a3d5484742dced8da6b33e5f70e284/DOCUMENTATION/Sprint%203/Sprint3Summary.md)
