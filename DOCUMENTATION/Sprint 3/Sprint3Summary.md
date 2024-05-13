@@ -16,8 +16,13 @@ Here is a image depicting capabilities: ![image](https://github.com/JGPerks/Pure
 Check out the [Explanatory Document](https://github.com/JGPerks/Pure-Tone/blob/d4e996684006db251458ac2fcdc6f0debd5f19d0/DOCUMENTATION/Sprint%203/ExplanatoryDocument.md) for information explaining the document.
 
 Roles from this past week:
+
 John: Code blocks to tk-interface with wave forms and pitch, put sine wave indicators
+
 Isaac: Code the pitch and wave form shift
-Juan and John: Save file. Record feature. Documentation on GitHub guide for recording feature
+
+Juan and Johnathan: Save file. Record feature. Documentation on GitHub guide for recording feature
+
 Bhavya: .wav files (find what is missing and put into the correct form). Work on indicator coding. Final presentation work.
+
 Alexis: Outline how to interact with Oscilloscope and tkinter in same window (position_screen_demo.py). Create a user manual. Documentation. Testing documentation. Final presentation work.
