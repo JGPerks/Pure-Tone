@@ -157,7 +157,6 @@ def keyboard_example(layout_name: kl.LayoutName):
     wave_tuple = ("Sawtooth Wave.PNG", "Sine Wave.PNG", "Square Wave.PNG", "Triangle Wave.PNG")
     wave_images_tuple = (sine_image, square_image, sawtooth_image, triangle_image)
 
-
     upper_label = tk.Label(window, image=sine_image)
     upper_label.place(x=1125, y=0)
 
@@ -198,6 +197,7 @@ def decrement_wave_indicator(current_image):
 def giveName():
     print("Unfinished")
 
+
 def toggleButton(button):
     if recorder.live is True:
         button.config(text="Stop Recording", command=lambda: stopAudio(button))
@@ -214,11 +214,13 @@ recorder = Recorder()
 
 def recAudio(button):
     name = simpledialog.askstring("Input", "What would you like to call this masterpiece: ")
+
     def rec():
         recorder.startRecording(name)
 
     threading.Thread(target=rec).start()
     toggleButton(button)
+
 
 def stopAudio(button):
     def stopRec():
@@ -226,6 +228,7 @@ def stopAudio(button):
 
     threading.Thread(target=stopRec()).start()
     toggleButton(button)
+
 
 if __name__ == "__main__":
     # Creating an argument parser object

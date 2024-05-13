@@ -9,7 +9,6 @@ from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 
 from Recorder import Recorder
 
-
 """ Microphone waveform display with Pyaudio, Pyplot and PysimpleGUI """
 
 
@@ -25,7 +24,7 @@ class OscilloscopeGUI:
                       'pltFig': False,
                       'xData': False,
                       'yData': False,
-                      'audioData': np.array([])} # Set audioData to an empty numPy array
+                      'audioData': np.array([])}  # Set audioData to an empty numPy array
         # Determine the font and theme
         self.AppFont = 'Any 16'
         sg.theme('DarkTeal2')
@@ -33,10 +32,10 @@ class OscilloscopeGUI:
         self.found = False
         # Create the canvas, Create horizontal progress bar, Create Listen, Stop, and Exit buttons
         self.layout = [[sg.Canvas(key='figCanvas')],
-                  [sg.ProgressBar(4000, orientation='h', size=(60, 20), key='-PROG-')],
-                  [sg.Button('Listen', font=self.AppFont),
-                   sg.Button('Stop', font=self.AppFont, disabled=True),
-                   sg.Button('Exit', font=self.AppFont)]]
+                       [sg.ProgressBar(4000, orientation='h', size=(60, 20), key='-PROG-')],
+                       [sg.Button('Listen', font=self.AppFont),
+                        sg.Button('Stop', font=self.AppFont, disabled=True),
+                        sg.Button('Exit', font=self.AppFont)]]
         # The window is then created and stored in the _VARS dictionary under the key 'window'
         self._VARS['window'] = sg.Window('Microphone Waveform Pyplot', self.layout, finalize=True, location=(400, 100))
         self.CHUNK = 1024
@@ -54,34 +53,37 @@ class OscilloscopeGUI:
     def drawPlot(self):
         self._VARS['pltFig'] = plt.figure()
         plt.plot(self._VARS['xData'], self._VARS['yData'], '--k')
-        plt.ylim(-4000, 4000)
+        plt.ylim(-5000, 5000)
         self._VARS['fig_agg'] = self.draw_figure(
             self._VARS['window']['figCanvas'].TKCanvas, self._VARS['pltFig'])
+
     def updatePlot(self, data):
         self._VARS['fig_agg'].get_tk_widget().forget()
         plt.cla()
         plt.clf()
         plt.plot(self._VARS['xData'], data, '--k')
-        plt.ylim(-4000, 4000)
+        plt.ylim(-5000, 5000)
         self._VARS['fig_agg'] = self.draw_figure(
             self._VARS['window']['figCanvas'].TKCanvas, self._VARS['pltFig'])
+
     def run(self):
         while True:
             event, values = self._VARS['window'].read()
             if event == sg.WINDOW_CLOSED or event == 'Exit':
                 break
+
     # FUNCTIONS:
     def stop(self):
         if self._VARS['stream']:
             self._VARS['stream'].stop_stream()
             self._VARS['stream'].close()
             self._VARS['window']['-PROG-'].update(0)
-            self._VARS['window'].FindElement('Stop').Update(disabled=True)
-            self._VARS['window'].FindElement('Listen').Update(disabled=False)
+            self._VARS['window'].find_element('Stop').Update(disabled=True)
+            self._VARS['window'].find_element('Listen').Update(disabled=False)
 
     def callback(self, in_data, frame_count, time_info, status):
         self._VARS['audioData'] = np.frombuffer(in_data, dtype=np.int16)
-        return (in_data, pyaudio.paContinue)
+        return in_data, pyaudio.paContinue
 
     def listen(self):
 
@@ -95,7 +97,7 @@ class OscilloscopeGUI:
         self._VARS['stream'] = self.pAud.open(format=pyaudio.paInt16,
                                               channels=1,
                                               rate=self.RATE,
-                                              input_device_index=2,
+                                              input_device_index=self.dev_index,
                                               frames_per_buffer=self.CHUNK,
                                               input=True,
                                               stream_callback=self.callback)
@@ -111,7 +113,7 @@ class OscilloscopeGUI:
 
     # MAIN LOOP
     def run_oscilloscope(self):
-        while True:  # While True continuously check for events from PySimpleGUI window
+        while True:  # While True continuously checks for events from PySimpleGUI window
             event, values = self._VARS['window'].read(timeout=self.TIMEOUT)  # use read() method to read events
             # If the "event" is sg.WIN_CLOSED(representing the window closed event) or if the 'Exit' button is clicked call stop()
             if event == sg.WIN_CLOSED or event == 'Exit':
